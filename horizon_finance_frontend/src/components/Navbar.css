@@ -1,70 +1,59 @@
-/* General reset */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Arial', sans-serif;
-  }
-  
-  /* Navbar container */
+/* Navbar.css */
+.navbar {
+  background-color: #4CAF50; /* Green background */
+  padding: 20px;
+  display: flex;
+  flex-direction: column; /* Make the navbar vertical */
+  align-items: flex-start; /* Align items to the left */
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  width: 200px; /* Set a fixed width for the navbar */
+  height: 100vh; /* Make the navbar span the full height */
+  position: fixed; /* Fix the navbar to the left side of the page */
+  top: 0;
+  left: 0;
+}
+
+/* Navbar logo */
+.navbar .logo {
+  font-size: 1.8rem;
+  color: white;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin-bottom: 30px; /* Space below the logo */
+}
+
+/* Navbar links */
+.navbar ul {
+  list-style-type: none; /* Remove bullet points */
+  padding-left: 0; /* Remove padding */
+}
+
+.navbar li {
+  display: block; /* Make each item block-level so they stack vertically */
+  margin-bottom: 20px; /* Space between links */
+}
+
+.navbar a {
+  color: white;
+  text-decoration: none;
+  font-size: 1.2rem;
+  font-weight: 600;
+  transition: color 0.3s ease;
+  display: block; /* Make each link take up the full width of the container */
+  padding: 10px;
+}
+
+.navbar a:hover {
+  color: #45a049; /* Darker green when hovered */
+}
+
+/* Optional: Add responsive behavior */
+@media (max-width: 768px) {
   .navbar {
-    background-color: #4CAF50; /* Green background */
-    padding: 15px 30px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    border-radius: 10px;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-    width: 100%;
+    width: 100%; /* Take up full width on smaller screens */
+    height: auto;
+    position: static; /* Remove fixed positioning */
   }
-  
-  /* Navbar brand/logo */
-  .navbar .logo {
-    font-size: 1.8rem;
-    color: white;
-    font-weight: bold;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-  }
-  
-  /* Navbar links */
-  .navbar ul {
-    list-style-type: none; /* Remove bullet points */
-    display: flex;
-    gap: 30px;
-  }
-  
-  .navbar li {
-    display: inline-block;
-  }
-  
-  .navbar a {
-    color: white;
-    text-decoration: none;
-    font-size: 1.2rem;
-    font-weight: 600;
-    transition: color 0.3s ease;
-  }
-  
-  .navbar a:hover {
-    color: #45a049; /* Darker green when hovered */
-  }
-  
-  /* Responsive design for small screens */
-  @media (max-width: 600px) {
-    .navbar {
-      flex-direction: column;
-      align-items: flex-start;
-      padding: 20px;
-    }
-  
-    .navbar ul {
-      flex-direction: column;
-      gap: 15px;
-    }
-  
-    .navbar a {
-      font-size: 1rem;
-    }
-  }
-  
+}
