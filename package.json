@@ -1,0 +1,24 @@
+{
+  "name": "horizon_finance_frontend",
+  "version": "1.0.0",
+  "description": "Personal financial guidance for those at different life stages",
+  "main": "index.js",
+  "scripts": {
+    "deploy": "gh-pages -d build",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/domcave/Horizon_Finance_frontend.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/domcave/Horizon_Finance_frontend/issues"
+  },
+  "homepage": "https://github.com/domcave/Horizon_Finance_frontend",
+  "devDependencies": {
+    "gh-pages": "^6.3.0"
+  }
+}
