@@ -6,6 +6,7 @@
     "axios": "^1.7.9",
     "browserslist": "^4.6.3",
     "cra-template": "1.2.0",
+    "horizon_finance_frontend": "file:",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-plaid-link": "^3.6.1",
