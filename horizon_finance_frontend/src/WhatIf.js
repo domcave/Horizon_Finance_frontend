@@ -138,7 +138,7 @@ const MarriagePopup = ({ isOpen, onClose }) => {
                   />
                 </div>
                 <div className="popup__section">
-                  <p>Are you sending them to college?</p>
+                  <p>Do you want to save for college?</p>
                   <label>
                     <input
                       type="radio"
@@ -172,10 +172,114 @@ const MarriagePopup = ({ isOpen, onClose }) => {
     );
   };
 
+  const RetirementPopup = ({ isOpen, onClose }) => {
+    const [currentStep, setCurrentStep] = React.useState(0);
+    const [targetAmount, setTargetAmount] = React.useState("");
+    const [retirementAge, setRetirementAge] = React.useState("");
+    const [hasRetirementAccount, setHasRetirementAccount] = React.useState("");
+    const [accountAPY, setAccountAPY] = React.useState("");
+    const [accountBalance, setAccountBalance] = React.useState("");
+  
+    const nextStep = () => setCurrentStep(currentStep + 1);
+    const prevStep = () => setCurrentStep(currentStep - 1);
+  
+    if (!isOpen) return null;
+  
+    return (
+      <div className="retirement-popup-overlay">
+        <div className="retirement-popup">
+          <h2>Retirement Planning</h2>
+  
+          {/* Step 1: Target Retirement Amount */}
+          {currentStep === 0 && (
+            <div>
+              <label>What is your target retirement amount?</label>
+              <input
+                type="number"
+                value={targetAmount}
+                onChange={(e) => setTargetAmount(e.target.value)}
+              />
+              <button onClick={nextStep}>Next</button>
+            </div>
+          )}
+  
+          {/* Step 2: Desired Retirement Age */}
+          {currentStep === 1 && (
+            <div>
+              <label>At what age do you want to retire?</label>
+              <input
+                type="number"
+                value={retirementAge}
+                onChange={(e) => setRetirementAge(e.target.value)}
+              />
+              <button onClick={prevStep}>Back</button>
+              <button onClick={nextStep}>Next</button>
+            </div>
+          )}
+  
+          {/* Step 3: Do they have a retirement account? */}
+          {currentStep === 2 && (
+            <div>
+              <label>Do you have a retirement account?</label>
+              <input
+                type="radio"
+                id="retirementYes"
+                name="retirementAccount"
+                value="Yes"
+                onChange={(e) => setHasRetirementAccount(e.target.value)}
+              />
+              <label htmlFor="retirementYes">Yes</label>
+              <input
+                type="radio"
+                id="retirementNo"
+                name="retirementAccount"
+                value="No"
+                onChange={(e) => setHasRetirementAccount(e.target.value)}
+              />
+              <label htmlFor="retirementNo">No</label>
+              <button onClick={prevStep}>Back</button>
+              <button onClick={nextStep}>Next</button>
+            </div>
+          )}
+  
+          {/* Step 4: If they have a retirement account */}
+          {currentStep === 3 && hasRetirementAccount === "Yes" && (
+            <div>
+              <label>What is your account's APY (Annual Percentage Yield)?</label>
+              <input
+                type="number"
+                value={accountAPY}
+                onChange={(e) => setAccountAPY(e.target.value)}
+              />
+              <label>What is your current account balance?</label>
+              <input
+                type="number"
+                value={accountBalance}
+                onChange={(e) => setAccountBalance(e.target.value)}
+              />
+              <button onClick={prevStep}>Back</button>
+              <button onClick={onClose}>Submit</button>
+            </div>
+          )}
+  
+          {/* Step 4: If they don't have a retirement account */}
+          {currentStep === 3 && hasRetirementAccount === "No" && (
+            <div>
+              <p>Thank you for the information!</p>
+              <button onClick={prevStep}>Back</button>
+              <button onClick={onClose}>Submit</button>
+            </div>
+          )}
+        </div>
+      </div>
+    );
+  };
+
 const WhatIfPage = () => {
   const [selectedEvent, setSelectedEvent] = useState('');
   const [showHousePopup, setShowHousePopup] = useState(false);
   const [showMarriagePopup, setShowMarriagePopup] = useState(false);
+  const [showRetirementPopup, setShowRetirementPopup] = useState(false);
 
   const handleEventSelect = (event) => {
     setSelectedEvent(event);
@@ -185,6 +289,9 @@ const WhatIfPage = () => {
       }
       else if (event === 'Marriage') {
         setShowMarriagePopup(true);
+      }
+      else if (event === 'Retirement') {
+        setShowRetirementPopup(true);
       }
   };
 
@@ -204,7 +311,7 @@ const WhatIfPage = () => {
       )}
             <HousePopup isOpen={showHousePopup} onClose={() => setShowHousePopup(false)} />
             <MarriagePopup isOpen={showMarriagePopup} onClose={() => setShowMarriagePopup(false)} />
-
+            <RetirementPopup isOpen={showRetirementPopup} onClose={() => setShowRetirementPopup(false)} />
     </div>
   );
 };
