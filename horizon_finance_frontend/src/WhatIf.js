@@ -1,12 +1,31 @@
-import React from "react";
+import React, { useState } from 'react';
+import Dropdown from './components/Dropdown';
+import Navbar from './components/Navbar';  // Import your Navbar component
+import './WhatIfPage.css'; // Optional for custom styles
 
-function WhatIf() {
+const WhatIfPage = () => {
+  const [selectedEvent, setSelectedEvent] = useState('');
+
+  const handleEventSelect = (event) => {
+    setSelectedEvent(event);
+  };
+
   return (
-    <div>
-      <h1>What If Page</h1>
-      <p>This is where your "What If" analysis will go.</p>
+    <div className="what-if-page">
+      <Navbar /> {/* Include Navbar here */}
+
+
+      <h1>What If</h1>
+      <Dropdown onSelect={handleEventSelect} />
+
+      {selectedEvent && (
+        <div className="event-info">
+          <h2>You selected: {selectedEvent}</h2>
+          <p>Here is more information about the event: {selectedEvent}.</p>
+        </div>
+      )}
     </div>
   );
-}
+};
 
-export default WhatIf;
+export default WhatIfPage;
