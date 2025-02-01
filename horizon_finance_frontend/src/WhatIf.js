@@ -66,14 +66,125 @@ const HousePopup = ({ isOpen, onClose }) => {
     );
   };
 
+// New Popup component for Marriage scenario
+const MarriagePopup = ({ isOpen, onClose }) => {
+    console.log(isOpen);
+    const [spouseIncome, setSpouseIncome] = useState('');
+    const [expectingChildren, setExpectingChildren] = useState(null); // true or false
+    const [numberOfChildren, setNumberOfChildren] = useState('');
+    const [sendChildrenToCollege, setSendChildrenToCollege] = useState(null); // true or false
+  
+    const handleSubmit = (e) => {
+      e.preventDefault();
+      console.log('Marriage Info:', {
+        spouseIncome,
+        expectingChildren,
+        numberOfChildren,
+        sendChildrenToCollege,
+      });
+      onClose();
+    };
+  
+    if (!isOpen) return null;
+  
+    return (
+      <div className="marriage-popup-overlay">
+        <div className="marriage-popup">
+          <h2>Marriage Information</h2>
+          <form onSubmit={handleSubmit}>
+            <div className="popup__section">
+              <label htmlFor="spouseIncome">Spouse Income:</label>
+              <input
+                id="spouseIncome"
+                type="number"
+                value={spouseIncome}
+                onChange={(e) => setSpouseIncome(e.target.value)}
+                placeholder="Enter spouse income"
+              />
+            </div>
+            <div className="popup__section">
+              <p>Are you expecting children?</p>
+              <label>
+                <input
+                  type="radio"
+                  name="expectingChildren"
+                  value="yes"
+                  checked={expectingChildren === true}
+                  onChange={() => setExpectingChildren(true)}
+                />
+                Yes
+              </label>
+              <label>
+                <input
+                  type="radio"
+                  name="expectingChildren"
+                  value="no"
+                  checked={expectingChildren === false}
+                  onChange={() => setExpectingChildren(false)}
+                />
+                No
+              </label>
+            </div>
+            {expectingChildren === true && (
+              <>
+                <div className="popup__section">
+                  <label htmlFor="numberOfChildren">How many children?</label>
+                  <input
+                    id="numberOfChildren"
+                    type="number"
+                    value={numberOfChildren}
+                    onChange={(e) => setNumberOfChildren(e.target.value)}
+                    placeholder="Enter number of children"
+                  />
+                </div>
+                <div className="popup__section">
+                  <p>Are you sending them to college?</p>
+                  <label>
+                    <input
+                      type="radio"
+                      name="sendChildrenToCollege"
+                      value="yes"
+                      checked={sendChildrenToCollege === true}
+                      onChange={() => setSendChildrenToCollege(true)}
+                    />
+                    Yes
+                  </label>
+                  <label>
+                    <input
+                      type="radio"
+                      name="sendChildrenToCollege"
+                      value="no"
+                      checked={sendChildrenToCollege === false}
+                      onChange={() => setSendChildrenToCollege(false)}
+                    />
+                    No
+                  </label>
+                </div>
+              </>
+            )}
+            <div className="popup__actions">
+              <button type="submit">Submit</button>
+              <button type="button" onClick={onClose}>Close</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    );
+  };
+
 const WhatIfPage = () => {
   const [selectedEvent, setSelectedEvent] = useState('');
   const [showHousePopup, setShowHousePopup] = useState(false);
+  const [showMarriagePopup, setShowMarriagePopup] = useState(false);
 
   const handleEventSelect = (event) => {
     setSelectedEvent(event);
+
     if (event === 'House') {
         setShowHousePopup(true);
+      }
+      else if (event === 'Marriage') {
+        setShowMarriagePopup(true);
       }
   };
 
@@ -92,6 +203,7 @@ const WhatIfPage = () => {
         </div>
       )}
             <HousePopup isOpen={showHousePopup} onClose={() => setShowHousePopup(false)} />
+            <MarriagePopup isOpen={showMarriagePopup} onClose={() => setShowMarriagePopup(false)} />
 
     </div>
   );
