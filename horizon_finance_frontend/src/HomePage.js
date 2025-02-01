@@ -23,8 +23,9 @@ const HomePage = () => {
   };
 
   return (
-    <div style={{ padding: '20px' }}>
-      <h1>Welcome</h1>
+    <div className="homepage">
+    <div className="homepage__actions">
+      <h1 class="homepage_header">Welcome</h1>
 
       {/* Redirect to Signup Page */}
       <div style={{ marginBottom: '20px' }}>
@@ -34,34 +35,38 @@ const HomePage = () => {
       </div>
 
       {/* Login Form */}
-      <div>
+      <div className="homepage__login-form">
         <h2>Login</h2>
         <form onSubmit={handleLogin}>
-          <div style={{ marginBottom: '10px' }}>
+        <div className="homepage__input-group">
             <label htmlFor="email">Email: </label>
             <input
               id="email"
               type="email"
               value={loginData.email}
+              className='homepage__label'
               onChange={e =>
                 setLoginData({ ...loginData, email: e.target.value })
               }
             />
           </div>
-          <div style={{ marginBottom: '10px' }}>
+          <div className="homepage__input-group">
             <label htmlFor="password">Password: </label>
             <input
               id="password"
               type="password"
               value={loginData.password}
+              className="homepage__label"
               onChange={e =>
                 setLoginData({ ...loginData, password: e.target.value })
               }
             />
           </div>
           {error && <p style={{ color: 'red' }}>{error}</p>}
-          <button type="submit">Login</button>
+          <button type="submit" className="homepage__login-btn">
+          Login</button>
         </form>
+      </div>
       </div>
     </div>
   );

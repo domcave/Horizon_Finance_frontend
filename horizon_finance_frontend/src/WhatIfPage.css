@@ -1,35 +1,84 @@
 /* WhatIfPage.css */
+
+/* Main container for the page content */
 .what-if-page {
-    background-color: #f5f5f5;
-    padding: 30px;
-    border-radius: 15px;
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-    width: 100%;
-    max-width: 600px;
-    margin: 20px auto 0; /* Added margin on top to separate from navbar */
+    /* Leave space on the left for the fixed navbar */
+    margin-left: 220px; /* Adjust to match your navbar's width */
+    padding: 40px;
+    background-color: #f0f0f0; /* A light neutral background */
+    min-height: 100vh;
   }
   
-  h1 {
-    text-align: center;
+  /* Page heading */
+  .what-if-page h1 {
     font-size: 2.5rem;
-    color: #4CAF50;
+    color: #333;
+    text-align: center;
+    margin-bottom: 20px;
   }
   
-  .event-info {
-    margin-top: 20px;
-    padding: 15px;
-    background-color: #ffffff;
+  /* Content wrapper for the main content (e.g., dropdown and event info) */
+  .what-if-content {
+    background-color: #fff;
+    padding: 30px;
     border-radius: 10px;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    max-width: 800px;
+    margin: 0 auto;
+  }
+  
+  /* Dropdown container styling */
+  .dropdown-container {
+    margin: 20px 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .dropdown-container label {
+    font-size: 1rem;
+    color: #333;
+    margin-bottom: 10px;
+  }
+  
+  .dropdown-container select {
+    padding: 10px 15px;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #fff;
+    color: #333;
+  }
+  
+  /* Event information display */
+  .event-info {
+    margin-top: 30px;
+    padding: 20px;
+    background-color: #e8f5e9; /* A soft light green to emphasize the info */
+    border-radius: 8px;
+    color: #2e7d32;
+    text-align: center;
   }
   
   .event-info h2 {
     font-size: 1.8rem;
-    color: #333;
+    margin-bottom: 10px;
   }
   
   .event-info p {
     font-size: 1rem;
-    color: #666;
+    line-height: 1.5;
+  }
+  
+  /* Responsive adjustments */
+  @media (max-width: 768px) {
+    .what-if-page {
+      margin-left: 0; /* Remove the left margin on small screens */
+      padding: 20px;
+    }
+    
+    .what-if-content {
+      margin: 0 10px;
+    }
   }
   

@@ -1,7 +1,9 @@
 import React from "react";
-import Navbar from "../src/components/Navbar";
-import Chart from "../src/components/Chart";
+import Navbar from "./components/Navbar";
+import Chart from "./components/Chart";
 import { useLocation } from 'react-router-dom';
+import './DashBoard.css';
+
 
 
 function Dashboard() {
@@ -10,11 +12,13 @@ function Dashboard() {
 
 
     return (
-        <div className="dashboard">
+        <div className="dashboard-page">
             <Navbar />
-            <div className="content">
+            <div className="dashboard-stats">
+            <div className="dashboard-content">
                 <h1>Dashboard</h1>
                 <Chart />
+            </div>
             </div>
         </div>
     );
