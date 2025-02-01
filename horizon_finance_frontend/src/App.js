@@ -1,7 +1,7 @@
 import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import SignUp from "./SignUpForm.js";
-import Dashboard from "./Dashboard.js";
+import Dashboard from "./DashBoard.js";
 import WhatIf from "./WhatIf.js";
 import HomePage from './HomePage';
 
