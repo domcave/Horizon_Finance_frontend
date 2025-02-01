@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="static/css/index.css" />
+
+  <title>Monthly Budget Dashboard</title>
+  
+</head>
+<body>
+  <div class="dashboard">
+    <h1>Monthly Budget Dashboard</h1>
+
+    <!-- Budget Progress Section -->
+    <div class="card">
+      <h2>Budget Progress</h2>
+      <p><strong>Monthly Budget:</strong> $4000</p>
+      <div class="progress-wrapper">
+        <div class="progress-bg">
+          <div class="progress-bar">60% ($2400 Spent)</div>
+        </div>
+      </div>
+      <p>60% of your budget has been used this month.</p>
+    </div>
+
+    <!-- Spending Breakdown Chart -->
+    <div class="card">
+      <h2>Spending Breakdown</h2>
+      <div class="chart-container">
+        <canvas id="spendingChart"></canvas>
+      </div>
+    </div>
+
+    <!-- Income vs. Expenses Chart -->
+    <div class="card">
+      <h2>Income vs. Expenses</h2>
+      <div class="chart-container">
+        <canvas id="incomeExpensesChart"></canvas>
+      </div>
+    </div>
+  </div>
+
+  <!-- Include Chart.js library from CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="static/js/index.js"></script>
+  
+</body>
+</html>
