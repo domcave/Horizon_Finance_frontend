@@ -1,0 +1,158 @@
+/* General reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Arial', sans-serif;
+  }
+  
+  /* Body styles */
+  body {
+    background-color: #4CAF50; /* Green background (primary color) */
+    color: white;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    text-align: center;
+    padding: 0 20px;
+  }
+  
+  /* Dashboard container */
+  .dashboard-container {
+    max-width: 900px;
+    width: 100%;
+    background-color: #ffffff; /* White background (secondary color) */
+    color: #333; /* Dark text color */
+    border-radius: 15px;
+    padding: 40px 30px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    margin-top: 40px;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+  }
+  
+  /* Header */
+  .dashboard-header {
+    font-size: 2.2rem;
+    font-weight: bold;
+    color: #333;
+  }
+  
+  /* User data section */
+  .user-info {
+    background-color: #f9f9f9;
+    padding: 20px;
+    border-radius: 10px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .user-info h3 {
+    font-size: 1.5rem;
+    color: #4CAF50; /* Green for section headers */
+  }
+  
+  /* Dashboard statistics */
+  .stats {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+  }
+  
+  .stat {
+    background-color: #4CAF50; /* Green background for stats */
+    color: white;
+    padding: 20px;
+    border-radius: 10px;
+    width: 100%;
+    max-width: 200px;
+    text-align: center;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  }
+  
+  .stat h4 {
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+  }
+  
+  .stat p {
+    font-size: 1.5rem;
+    font-weight: bold;
+  }
+  
+  /* Action buttons */
+  button {
+    background-color: #4CAF50; /* Green button */
+    border: none;
+    color: white;
+    padding: 12px 30px;
+    font-size: 1rem;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    font-weight: 600;
+    width: 200px;
+    margin-top: 20px;
+    align-self: center;
+  }
+  
+  button:hover {
+    background-color: #45a049; /* Darker green for hover effect */
+  }
+  
+  /* Logout section */
+  .logout {
+    text-align: center;
+  }
+  
+  .logout a {
+    color: #4CAF50; /* Green logout link */
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1.2rem;
+  }
+  
+  .logout a:hover {
+    color: #45a049; /* Darker green on hover */
+  }
+  
+  /* Responsive design for small screens */
+  @media (max-width: 600px) {
+    body {
+      padding: 10px;
+    }
+  
+    .dashboard-container {
+      padding: 20px;
+    }
+  
+    .dashboard-header {
+      font-size: 1.8rem;
+    }
+  
+    .user-info {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+  
+    .stats {
+      flex-direction: column;
+      align-items: center;
+    }
+  
+    .stat {
+      width: 100%;
+      max-width: none;
+    }
+  
+    button {
+      width: 100%;
+    }
+  }
+  

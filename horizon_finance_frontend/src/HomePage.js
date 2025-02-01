@@ -1,6 +1,8 @@
 // HomePage.js
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import './HomePage.css'; // Make sure to import your CSS file
+
 
 const HomePage = () => {
   const navigate = useNavigate();
