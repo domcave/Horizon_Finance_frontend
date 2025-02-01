@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import Dropdown from './components/Dropdown';
+import Navbar from './components/Navbar';  // Import your Navbar component
+import './WhatIfPage.css'; // Optional for custom styles
 
 const WhatIfPage = () => {
   const [selectedEvent, setSelectedEvent] = useState('');
@@ -10,6 +12,9 @@ const WhatIfPage = () => {
 
   return (
     <div className="what-if-page">
+      <Navbar /> {/* Include Navbar here */}
+
+
       <h1>What If</h1>
       <Dropdown onSelect={handleEventSelect} />
 
