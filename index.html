@@ -1,49 +1,73 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="stylesheet" href="static/css/index.css" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" media="all and (min-width:900px)" href="/static/css/index_monitor.css">
+    <link rel="stylesheet" media="all and (min-width:451px) and (max-width:899px)" href="/static/css/index_tablet.css">
+    <link rel="stylesheet" media="all and (max-width:450px)" href="static/css/index_smartphone.css">
 
-  <title>Monthly Budget Dashboard</title>
-  
+    <title>Dashboard</title>
+
 </head>
+
 <body>
-  <div class="dashboard">
-    <h1>Monthly Budget Dashboard</h1>
 
-    <!-- Budget Progress Section -->
-    <div class="card">
-      <h2>Budget Progress</h2>
-      <p><strong>Monthly Budget:</strong> $4000</p>
-      <div class="progress-wrapper">
-        <div class="progress-bg">
-          <div class="progress-bar">60% ($2400 Spent)</div>
+    <!-- Sidebar Navigation -->
+    <nav class="sidebar">
+        <ul>
+            <li>
+                <a href="index.html" title="Dashboard">
+                    <i class="fas fa-home"></i>
+                    <span>Dashboard</span>
+                </a>
+            </li>
+            <li>
+                <a href="whatif.html" title="What If?">
+                    <i class="fas fa-comment-dots"></i>
+                    <span>What If?</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+
+    <div class="dashboard">
+        <h1>Dashboard</h1>
+
+        <!-- Budget Progress Section -->
+        <div class="card">
+            <h2>Budget Progress</h2>
+            <p><strong>Monthly Budget:</strong> $4000</p>
+            <div class="progress-wrapper">
+                <div class="progress-bg">
+                    <div class="progress-bar">60% ($2400 Spent)</div>
+                </div>
+            </div>
+            <p>60% of your budget has been used this month.</p>
         </div>
-      </div>
-      <p>60% of your budget has been used this month.</p>
+
+        <!-- Spending Breakdown Chart -->
+        <div class="card">
+            <h2>Spending Breakdown</h2>
+            <div class="chart-container">
+                <canvas id="spendingChart"></canvas>
+            </div>
+        </div>
+
+        <!-- Income vs. Expenses Chart -->
+        <div class="card">
+            <h2>Income vs. Expenses</h2>
+            <div class="chart-container">
+                <canvas id="incomeExpensesChart"></canvas>
+            </div>
+        </div>
     </div>
 
-    <!-- Spending Breakdown Chart -->
-    <div class="card">
-      <h2>Spending Breakdown</h2>
-      <div class="chart-container">
-        <canvas id="spendingChart"></canvas>
-      </div>
-    </div>
+    <!-- Include Chart.js library from CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="/static/js/index.js"></script>
 
-    <!-- Income vs. Expenses Chart -->
-    <div class="card">
-      <h2>Income vs. Expenses</h2>
-      <div class="chart-container">
-        <canvas id="incomeExpensesChart"></canvas>
-      </div>
-    </div>
-  </div>
-
-  <!-- Include Chart.js library from CDN -->
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-  <script src="static/js/index.js"></script>
-  
 </body>
+
 </html>
