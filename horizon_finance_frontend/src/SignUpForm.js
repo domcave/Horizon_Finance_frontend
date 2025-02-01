@@ -1,10 +1,11 @@
-import React from 'react';
+import React, { useState } from 'react';
 import InputField from './InputField';
 import { useNavigate } from 'react-router-dom';
 import './SignUpForm.css'; // Import the CSS for styling the form
 
 const SignUpForm = () => {
     const navigate = useNavigate();
+    
     const handleSubmit = (event) => {
         event.preventDefault();
         // Here you can handle form submission, e.g., send data to a server.

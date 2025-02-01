@@ -5,6 +5,7 @@ import { useLocation } from 'react-router-dom';
 import './DashBoard.css';
 
 
+import ConnectBank from "./services/plaid_service";
 
 function Dashboard() {
     const location = useLocation();
@@ -20,7 +21,10 @@ function Dashboard() {
                 <Chart />
             </div>
             </div>
-        </div>
+          <div>
+        <ConnectBank user_id="user1"/>
+      </div>
+    </div>
     );
 }
 
