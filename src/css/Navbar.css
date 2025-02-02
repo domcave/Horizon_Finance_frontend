@@ -20,6 +20,11 @@
   animation: fadeIn 0.8s ease-in 0.2s forwards; /* Fade-in animation */
 }
 
+.logo {
+  width: 150px;
+  height: auto;
+}
+
 @keyframes fadeIn {
   from {
     opacity: 0;
