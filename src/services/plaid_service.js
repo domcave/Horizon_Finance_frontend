@@ -68,7 +68,7 @@ export function ConnectBank({ user_id, onSuccess }) {
 }
 
 export async function getTransactions30Days(username) {
-  const response = await axios.get(`/transactions/30days`, {
+  const response = await axios.get(`/plaid/transactions/30days`, {
     params: { username },
   });
   console.log(response);
@@ -76,7 +76,7 @@ export async function getTransactions30Days(username) {
 }
 
 export async function getTransactionsThisMonth(username) {
-  const response = await axios.get(`/transactions/month`, {
+  const response = await axios.get(`/plaid/transactions/month`, {
     params: { username },
   });
   console.log(response);
@@ -84,7 +84,7 @@ export async function getTransactionsThisMonth(username) {
 }
 
 export async function getInvestmentHoldings(username) {
-  const response = await axios.get(`/investments/holdings`, {
+  const response = await axios.get(`/plaid/investments/holdings`, {
     params: { username },
   });
   console.log(response);
@@ -92,7 +92,7 @@ export async function getInvestmentHoldings(username) {
 }
 
 export async function getAccountBalances(username) {
-  const response = await axios.get(`/accounts/balance`, {
+  const response = await axios.get(`/plaid/accounts/balance`, {
     params: { username },
   });
   console.log(response);
