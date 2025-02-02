@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react';
 
 axios.defaults.baseURL = "http://127.0.0.1:5000/plaid";
 
-export default function ConnectBank({ user_id }) {
+export function ConnectBank({ user_id }) {
     const [ linkToken, setLinkToken ] = useState(null);
     const [ publicToken, setPublicToken ] = useState(null);
 
@@ -36,7 +36,10 @@ export default function ConnectBank({ user_id }) {
                     try {
                         console.log(publicToken)
                         const response = await axios.post("/access_token", 
-                            { public_token: public_token }, 
+                            { 
+                                public_token: public_token,
+                                username: user_id
+                            }, 
                             {
                                 headers: {
                                     "Content-Type": "application/json"
@@ -63,5 +66,37 @@ export default function ConnectBank({ user_id }) {
     );
 
 }
+
+
+export async function getTransactions30Days(username) {
+    const response = await axios.get(`/transactions/30days`, {
+        params: { username }
+    });
+    console.log(response);
+}
+
+export async function getTransactionsThisMonth(username) {
+    const response = await axios.get(`/transactions/month`, {
+        params: { username }
+    });
+    console.log(response);
+}
+
+export async function getInvestmentHoldings(username) {
+    const response = await axios.get(`/investments/holdings`, {
+        params: { username }
+    });
+    console.log(response);
+}
+
+export async function getAccountBalances(username) {
+    const response = await axios.get(`/accounts/balance`, {
+        params: { username }
+    });
+    console.log(response);
+}
+
+
+
 
 
