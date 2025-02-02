@@ -1,10 +1,4 @@
 /* Basic styling for the dashboard */
-body {
-    font-family: Arial, sans-serif;
-    background-color: #f4f4f4;
-    margin: 0;
-    padding: 20px;
-}
 .dashboard {
     max-width: 50%;
     margin: 0 auto;
@@ -41,14 +35,7 @@ h1, h2 {
     position: relative;
     height: 300px;
 }
-/* General Styles */
-body {
-    margin: 0;
-    padding: 0;
-    font-family: Arial, sans-serif;
-    display: flex;
-  }
-  
+
   /* Sidebar Styles */
   .sidebar {
     width: 20%;

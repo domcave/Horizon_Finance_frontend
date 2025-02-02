@@ -29,68 +29,71 @@ const WhatIfPage = () => {
 
   return (
     <div className="what-if-page">
-      <Navbar />
-      <div className="header-container">
-        <h1 className="page-title">What If</h1>
-        <p className="page-subtitle">
-          Explore life events and their financial implications.
-        </p>
-        <Dropdown onSelect={handleEventSelect} />
+      <div className="navbar-container">
+        <Navbar />
       </div>
 
-      {selectedEvent && (
-        <div className="event-info-card">
-          <h2 className="event-title">You selected: {selectedEvent}</h2>
-          <p className="event-description">
-            Here is more information about the event.
+      <div className="content-container">
+        <div className="header-container">
+          <h1 className="page-title">What If</h1>
+          <p className="page-subtitle">
+            Explore life events and their financial implications.
           </p>
+          <Dropdown onSelect={handleEventSelect} />
         </div>
-      )}
 
-      {/* House Popup */}
-      <HousePopup
-        isOpen={activePopup === "House"}
-        onClose={() => setActivePopup(null)}
-        setRecommendation={setHouseRecommendation}
-      />
+        {selectedEvent && (
+          <div className="event-info-card">
+            <h2 className="event-title">You selected: {selectedEvent}</h2>
+            <p className="event-description">
+              Here is more information about the event.
+            </p>
+          </div>
+        )}
 
-      {/* Marriage Popup */}
-      <MarriagePopup
-        isOpen={activePopup === "Marriage"}
-        onClose={() => setActivePopup(null)}
-        setRecommendation={setMarriageRecommendation}
-      />
+        <HousePopup
+          isOpen={activePopup === "House"}
+          onClose={() => setActivePopup(null)}
+          setRecommendation={setHouseRecommendation}
+        />
 
-      {/* Retirement Popup */}
-      <RetirementPopup
-        isOpen={activePopup === "Retirement"}
-        onClose={() => setActivePopup(null)}
-        setRecommendation={setRetirementRecommendation}
-      />
+        <MarriagePopup
+          isOpen={activePopup === "Marriage"}
+          onClose={() => setActivePopup(null)}
+          setRecommendation={setMarriageRecommendation}
+        />
 
-      {/* Display recommendations based on selected event */}
-      {selectedEvent === "House" && houseRecommendation && (
-        <div className="recommendation-card">
-          <h3 className="recommendation-title">🏡 House Recommendation:</h3>
-          <p>{houseRecommendation}</p>
-        </div>
-      )}
+        <RetirementPopup
+          isOpen={activePopup === "Retirement"}
+          onClose={() => setActivePopup(null)}
+          setRecommendation={setRetirementRecommendation}
+        />
 
-      {selectedEvent === "Marriage" && marriageRecommendation && (
-        <div className="recommendation-card">
-          <h3 className="recommendation-title">💍 Marriage Recommendation:</h3>
-          <p>{marriageRecommendation}</p>
-        </div>
-      )}
+        {selectedEvent === "House" && houseRecommendation && (
+          <div className="recommendation-card">
+            <h3 className="recommendation-title">🏡 House Recommendation:</h3>
+            <p>{houseRecommendation}</p>
+          </div>
+        )}
 
-      {selectedEvent === "Retirement" && retirementRecommendation && (
-        <div className="recommendation-card">
-          <h3 className="recommendation-title">
-            🌴 Retirement Recommendation:
-          </h3>
-          <p>{retirementRecommendation}</p>
-        </div>
-      )}
+        {selectedEvent === "Marriage" && marriageRecommendation && (
+          <div className="recommendation-card">
+            <h3 className="recommendation-title">
+              💍 Marriage Recommendation:
+            </h3>
+            <p>{marriageRecommendation}</p>
+          </div>
+        )}
+
+        {selectedEvent === "Retirement" && retirementRecommendation && (
+          <div className="recommendation-card">
+            <h3 className="recommendation-title">
+              🌴 Retirement Recommendation:
+            </h3>
+            <p>{retirementRecommendation}</p>
+          </div>
+        )}
+      </div>
     </div>
   );
 };

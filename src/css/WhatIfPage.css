@@ -8,36 +8,55 @@
 }
 
 .what-if-page {
+  display: flex; /* Use flexbox for layout */
+  height: 100vh;
+}
+
+.navbar-container {
+  width: 160px; /* Adjust to the width of your navbar */
+  background-color: #2c3e50;
+  height: 100vh;
+  position: fixed; /* Make sure the navbar stays on the left */
+  left: 0;
+  top: 0;
+}
+
+.content-container {
+  margin-left: 160px; /* Offset the content by the navbar's width */
+  width: 100%;
   padding: 40px;
   background-color: #f8f9fa;
   min-height: 100vh;
-  width: 100vw;
   display: flex;
   flex-direction: column;
+  align-items: center;
+  justify-content: flex-start; /* Start from the top */
   opacity: 0;
   animation: fadeIn 1s ease-in 0.3s forwards;
-  padding-left: 260px;
+}
+
+.header-container {
+  text-align: center;
+  margin-bottom: 30px;
 }
 
 .what-if-page h1 {
   font-size: 2.5rem;
   color: #2c3e50;
-  text-align: center;
   margin-bottom: 20px;
   font-weight: 700;
   opacity: 0;
   animation: fadeIn 0.8s ease-in 0.6s forwards;
 }
 
-.what-if-content {
-  background-color: #fff;
-  padding: 30px;
-  border-radius: 12px;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-  max-width: 800px;
-  margin: 0 auto;
+.page-subtitle {
+  font-size: 1.8rem;
+  color: #2c3e50;
+  text-align: center;
+  margin-bottom: 20px;
+  font-weight: 700;
   opacity: 0;
-  animation: fadeIn 0.8s ease-in 0.9s forwards; /* Delay fade-in for content */
+  animation: fadeIn 0.8s ease-in 1.2s forwards;
 }
 
 /* Dropdown container styling */
@@ -114,6 +133,7 @@
     transform: translateY(0);
   }
 }
+
 /* Event information display */
 /* Event info card */
 .event-info-card {
@@ -205,12 +225,26 @@
 /* Responsive adjustments */
 @media (max-width: 768px) {
   .what-if-page {
+    flex-direction: column; /* Stack navbar and content vertically on small screens */
+  }
+
+  .navbar-container {
+    width: 100%; /* Navbar takes up full width */
+    position: relative; /* Reset position for smaller screens */
+    height: auto;
+  }
+
+  .content-container {
     margin-left: 0;
     padding: 20px;
     width: 100%;
   }
 
-  .what-if-content {
-    margin: 0 10px;
+  .what-if-page h1 {
+    font-size: 2rem;
+  }
+
+  .page-subtitle {
+    font-size: 1.4rem;
   }
 }
