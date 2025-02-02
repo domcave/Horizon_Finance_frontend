@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import "../css/Navbar.css"; // Import the CSS
+import logo from "../assets/HorizonFinance.png";
 
 function Navbar() {
   return (
@@ -11,6 +12,9 @@ function Navbar() {
       }}
     >
       <ul>
+        <li>
+        <img src={logo} alt="Horizon Finance Logo" className="logo"/>
+        </li>
         <li>
           <Link to="/">🏠 Home</Link>
         </li>
