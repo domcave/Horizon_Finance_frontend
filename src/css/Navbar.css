@@ -1,13 +1,13 @@
 /* Navbar.css */
 .navbar {
-  background-color: #4CAF50; /* Green background */
+  background-color: linear-gradient(0deg, #6a11cb 0%, #2575fc 100%);
   padding: 20px;
   display: flex;
   flex-direction: column; /* Make the navbar vertical */
   align-items: flex-start; /* Align items to the left */
   border-radius: 10px;
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-  width: 200px; /* Set a fixed width for the navbar */
+  width: 164px; /* Set a fixed width for the navbar */
   height: 100vh; /* Make the navbar span the full height */
   position: fixed; /* Fix the navbar to the left side of the page */
   top: 0;
@@ -52,6 +52,7 @@
 /* Optional: Add responsive behavior */
 @media (max-width: 768px) {
   .navbar {
+    background-color: linear-gradient(0deg, #6a11cb 0%, #2575fc 100%);
     width: 100%; /* Take up full width on smaller screens */
     height: auto;
     position: static; /* Remove fixed positioning */

@@ -71,6 +71,7 @@ export async function getTransactions30Days(username) {
     params: { username },
   });
   console.log(response);
+  return response
 }
 
 export async function getTransactionsThisMonth(username) {
@@ -78,6 +79,7 @@ export async function getTransactionsThisMonth(username) {
     params: { username },
   });
   console.log(response);
+  return response
 }
 
 export async function getInvestmentHoldings(username) {
@@ -85,6 +87,7 @@ export async function getInvestmentHoldings(username) {
     params: { username },
   });
   console.log(response);
+  return response
 }
 
 export async function getAccountBalances(username) {
@@ -92,4 +95,5 @@ export async function getAccountBalances(username) {
     params: { username },
   });
   console.log(response);
+  return response
 }

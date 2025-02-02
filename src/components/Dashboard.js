@@ -1,47 +1,64 @@
 import React from "react";
 import Navbar from "./Navbar";
 import Chart from "./Chart";
-import "../css/DashBoard.css";
+import "../css/Dashboard.css";
+import { useState } from 'react';
 
 import * as PlaidService from "../../src/services/plaid_service";
 import * as RecommendationService from "../../src/services/recommendation_service";
+import CardLineChart from "./CardLineChart";
 
 function Dashboard() {
+
+  const [transactions30, setTransactions30] = useState({})
+  const [transactionsMonth, setTransactionsMonth] = useState({})
+  const [investments, setInvestments] = useState({})
+  const [accountBalances, setAccountBalances] = useState({})
+
   return (
     <div className="dashboard-page">
       <Navbar />
-      <div className="dashboard-stats">
-        <div className="dashboard-content">
-          <h1>Dashboard</h1>
+      <div className="cards">
+        <div className="card">
+          {/* {<CardLineChart transactions={transactions30} /> } */}
           <Chart />
         </div>
+        <div className="card">
+          <Chart />
+        </div>
+        <div className="card">
+          <Chart />
+        </div>
+        <div className="card">
+          <Chart />
+        </div>
+
       </div>
-      <div>
         <PlaidService.ConnectBank user_id="user1" />
         <button
           onClick={() => {
-            PlaidService.getTransactions30Days("user1");
+            setTransactions30(PlaidService.getTransactions30Days("user1").json());
           }}
         >
           Click to get transaction data of last 30 days
         </button>
         <button
           onClick={() => {
-            PlaidService.getTransactionsThisMonth("user1");
+            setTransactionsMonth(PlaidService.getTransactionsThisMonth("user1").json());
           }}
         >
           Click to get transaction data of this month
         </button>
         <button
           onClick={() => {
-            PlaidService.getInvestmentHoldings("user1");
+            setInvestments(PlaidService.getInvestmentHoldings("user1").json());
           }}
         >
           Click to get investment data
         </button>
         <button
           onClick={() => {
-            PlaidService.getAccountBalances("user1");
+            setAccountBalances(PlaidService.getAccountBalances("user1").json());
           }}
         >
           Click to get account balance data
@@ -64,7 +81,7 @@ function Dashboard() {
             arr: 0.07,
             wd_rate: 0.04
         })}}>Click to get retirement recommendation</button>
-      </div>
+      
     </div>
   );
 }
