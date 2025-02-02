@@ -8,10 +8,12 @@ function Navbar() {
     <nav className="navbar">
       <ul className="navbar-links">
         <li>
-        <img src={logo} alt="Horizon Finance Logo" className="logo"/>
+          <img src={logo} alt="Horizon Finance Logo" className="logo" />
         </li>
         <li>
-          <Link to="/">🏠 Home</Link>
+          <Link to="/" className="nav-link">
+            🏠 Home
+          </Link>
         </li>
         <li>
           <Link to="/what-if" className="nav-link">
