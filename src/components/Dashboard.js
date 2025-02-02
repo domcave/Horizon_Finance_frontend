@@ -1,15 +1,11 @@
 import React from "react";
 import Navbar from "./Navbar";
 import Chart from "./Chart";
-import { useLocation } from "react-router-dom";
 import "../css/DashBoard.css";
 
 import * as PlaidService from "../../src/services/plaid_service";
 
 function Dashboard() {
-  const location = useLocation();
-  const { email, password } = location.state || {}; // stored email and passwd
-
   return (
     <div className="dashboard-page">
       <Navbar />

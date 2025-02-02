@@ -1,16 +1,19 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import "../css/LoginPage.css";
+import "../css/LoginSignup.css";
 import axios from "axios";
+import InputField from "./InputField";
 
 const LoginPage = () => {
   const navigate = useNavigate();
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
   const [error, setError] = useState("");
 
-  const handleLogin = async (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
+
+    const formData = new FormData(e.target);
+    const password = formData.get("password");
+    const email = formData.get("email");
 
     try {
       const response = await axios.post(
@@ -26,7 +29,8 @@ const LoginPage = () => {
         }
       );
 
-      localStorage.setItem("userToken", response.data.token);
+      localStorage.setItem("userToken", response.data.access_token);
+
       navigate("/dashboard");
     } catch (err) {
       setError(err.response?.data?.message || "Invalid login credentials");
@@ -34,44 +38,34 @@ const LoginPage = () => {
   };
 
   return (
-    <div className="homepage">
-      <div className="homepage__actions">
-        <h1 class="homepage_header">Welcome</h1>
-
-        <div style={{ marginBottom: "20px" }}>
-          <button onClick={() => navigate("/signup")}>Signup</button>
-        </div>
-
-        <div className="homepage__login-form">
-          <h2>Login</h2>
-          <form onSubmit={handleLogin}>
-            <div className="homepage__input-group">
-              <label htmlFor="email">Email: </label>
-              <input
-                id="email"
-                type="email"
-                value={email}
-                className="homepage__label"
-                onChange={(e) => setEmail(e.target.value)}
-              />
-            </div>
-            <div className="homepage__input-group">
-              <label htmlFor="password">Password: </label>
-              <input
-                id="password"
-                type="password"
-                value={password}
-                className="homepage__label"
-                onChange={(e) => setPassword(e.target.value)}
-              />
-            </div>
-            {error && <p style={{ color: "red" }}>{error}</p>}
-            <button type="submit" className="homepage__login-btn">
-              Login
-            </button>
-          </form>
-        </div>
-      </div>
+    <div className="signup-container">
+      <h2>Log In</h2>
+      {error && <p className="error-message">{error}</p>}
+      <form onSubmit={handleSubmit}>
+        <InputField
+          id="email"
+          type="email"
+          name="email"
+          placeholder="you@example.com"
+          label="Email"
+        />
+        <InputField
+          id="password"
+          type="password"
+          name="password"
+          placeholder="Enter your password"
+          label="Password"
+        />
+        <button type="submit" className="submit-button">
+          Log In
+        </button>
+      </form>
+      <p>
+        Don't have an account?{" "}
+        <a href="/signup" className="signup-link">
+          Sign Up
+        </a>
+      </p>
     </div>
   );
 };

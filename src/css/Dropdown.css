@@ -1,32 +1,30 @@
-/* Dropdown.css */
 .dropdown-container {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    margin-bottom: 20px;
-  }
-  
-  .dropdown-label {
-    font-size: 1rem;
-    color: #333;
-    margin-bottom: 10px;
-  }
-  
-  .dropdown {
-    padding: 10px 15px;
-    font-size: 1rem;
-    border: 2px solid #4CAF50;  /* Green border */
-    border-radius: 8px;
-    background-color: #fff;
-    color: #333;
-    cursor: pointer;
-  }
-  
-  .dropdown:focus {
-    border-color: #45a049; /* Darker green on focus */
-  }
-  
-  option {
-    padding: 10px;
-  }
-  
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-bottom: 20px;
+}
+
+.dropdown-label {
+  font-size: 1rem;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.dropdown {
+  padding: 10px 15px;
+  font-size: 1rem;
+  border: 2px solid #4caf50;
+  border-radius: 8px;
+  background-color: #fff;
+  color: #333;
+  cursor: pointer;
+}
+
+.dropdown:focus {
+  border-color: #45a049;
+}
+
+option {
+  padding: 10px;
+}

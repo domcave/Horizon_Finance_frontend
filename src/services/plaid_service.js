@@ -1,6 +1,7 @@
 import { usePlaidLink } from "react-plaid-link";
 import axios from "axios";
 import { useState, useEffect } from "react";
+import "../css/LoginSignup.css";
 
 axios.defaults.baseURL = "http://127.0.0.1:5000/plaid";
 
