@@ -1,313 +1,227 @@
-/* WhatIfPage.css */
+html,
+body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  font-family: "Inter", sans-serif;
+  opacity: 1;
+  animation: fadeIn 1s ease-in forwards;
+}
 
-/* Main container for the page content */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
 .what-if-page {
-    /* Leave space on the left for the fixed navbar */
-    margin-left: 220px; /* Adjust to match your navbar's width */
-    padding: 40px;
-    background-color: #f0f0f0; /* A light neutral background */
-    min-height: 100vh;
+  padding: 40px;
+  background-color: #f8f9fa;
+  min-height: 100vh;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  opacity: 0;
+  animation: fadeIn 1s ease-in 0.3s forwards;
+  padding-left: 260px;
+}
+
+.what-if-page h1 {
+  font-size: 2.5rem;
+  color: #2c3e50;
+  text-align: center;
+  margin-bottom: 20px;
+  font-weight: 700;
+  opacity: 0;
+  animation: fadeIn 0.8s ease-in 0.6s forwards;
+}
+
+.what-if-content {
+  background-color: #fff;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  max-width: 800px;
+  margin: 0 auto;
+  opacity: 0;
+  animation: fadeIn 0.8s ease-in 0.9s forwards; /* Delay fade-in for content */
+}
+
+/* Dropdown container styling */
+/* Dropdown container */
+.dropdown-container {
+  margin: 30px 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  opacity: 0; /* Start with opacity 0 */
+  animation: fadeIn 0.8s ease-in 0.3s forwards; /* Fade-in animation */
+}
+
+/* Dropdown label */
+.dropdown-label {
+  font-size: 1.2rem;
+  color: #2c3e50; /* Dark text for contrast */
+  margin-bottom: 10px;
+  font-weight: 600; /* Bold text */
+  text-transform: uppercase; /* Uppercase for emphasis */
+  letter-spacing: 1px; /* Spaced-out letters */
+  opacity: 0; /* Start with opacity 0 */
+  animation: fadeIn 0.8s ease-in 0.5s forwards; /* Fade-in animation */
+}
+
+/* Dropdown select */
+.dropdown-select {
+  padding: 12px 20px;
+  font-size: 1rem;
+  border: 2px solid #ddd; /* Light border */
+  border-radius: 10px; /* Rounded corners */
+  background-color: #fff;
+  color: #333;
+  width: 100%;
+  max-width: 300px; /* Limit width for better aesthetics */
+  appearance: none; /* Remove default arrow */
+  background-image: url("data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%232c3e50%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.5-3.5%205.4-7.8%205.4-12.8%200-5-1.9-9.2-5.5-12.8z%22%2F%3E%3C%2Fsvg%3E"); /* Custom dropdown arrow */
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+  background-size: 12px;
+  cursor: pointer;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
+  opacity: 0; /* Start with opacity 0 */
+  animation: fadeIn 0.8s ease-in 0.7s forwards; /* Fade-in animation */
+}
+
+/* Dropdown hover and focus states */
+.dropdown-select:hover {
+  border-color: #6a11cb; /* Gradient color on hover */
+  transform: translateY(-2px); /* Slight lift on hover */
+}
+
+.dropdown-select:focus {
+  border-color: #2575fc; /* Gradient color on focus */
+  box-shadow: 0 0 0 3px rgba(37, 117, 252, 0.2); /* Subtle focus ring */
+  outline: none; /* Remove default outline */
+}
+
+/* Dropdown option styling */
+.dropdown-select option {
+  font-size: 1rem;
+  color: #333;
+  background-color: #fff;
+}
+
+/* Fade-in animation */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
   }
-  
-  /* Page heading */
-  .what-if-page h1 {
-    font-size: 2.5rem;
-    color: #333;
-    text-align: center;
-    margin-bottom: 20px;
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
-  
-  /* Content wrapper for the main content (e.g., dropdown and event info) */
+}
+/* Event information display */
+/* Event info card */
+.event-info-card {
+  margin-top: 30px;
+  padding: 30px;
+  background: linear-gradient(
+    135deg,
+    #6a11cb,
+    #2575fc
+  ); /* Gradient background */
+  border-radius: 16px; /* Rounded corners */
+  color: #fff; /* White text */
+  text-align: center;
+  max-width: 600px;
+  margin: 0 auto;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2); /* Soft shadow */
+  opacity: 0; /* Start with opacity 0 */
+  transform: translateY(20px); /* Start slightly below */
+  animation: fadeInUp 0.8s ease-in-out 0.5s forwards; /* Fade-in animation */
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.event-title {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 15px;
+  text-transform: uppercase; /* Uppercase text for emphasis */
+  letter-spacing: 1px; /* Spaced-out letters */
+}
+
+.event-description {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  opacity: 0.9; /* Slightly transparent for a modern look */
+}
+
+/* Add a hover effect for extra flair */
+.event-info-card:hover {
+  transform: scale(1.02); /* Slight grow effect */
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.3); /* Deeper shadow on hover */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Recommendation cards */
+.recommendation-card {
+  margin-top: 30px;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  text-align: left;
+  opacity: 0;
+  animation: fadeIn 0.8s ease-in 1.8s forwards; /* Delay fade-in for recommendation cards */
+}
+
+.recommendation-card h3 {
+  font-size: 1.5rem;
+  color: #2c3e50;
+  margin-bottom: 10px;
+  font-weight: 600;
+}
+
+.recommendation-card p {
+  font-size: 1rem;
+  color: #555;
+  line-height: 1.6;
+}
+
+.page-subtitle {
+  font-size: 1.8rem;
+  color: #2c3e50;
+  text-align: center;
+  margin-bottom: 20px;
+  font-weight: 700;
+  opacity: 0; /* Start with opacity 0 */
+  animation: fadeIn 0.8s ease-in 1.2s forwards; /* Delay fade-in for subtitle */
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .what-if-page {
+    margin-left: 0;
+    padding: 20px;
+    width: 100%;
+  }
+
   .what-if-content {
-    background-color: #fff;
-    padding: 30px;
-    border-radius: 10px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-    max-width: 800px;
-    margin: 0 auto;
+    margin: 0 10px;
   }
-  
-  /* Dropdown container styling */
-  .dropdown-container {
-    margin: 20px 0;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-  
-  .dropdown-container label {
-    font-size: 1rem;
-    color: #333;
-    margin-bottom: 10px;
-  }
-  
-  .dropdown-container select {
-    padding: 10px 15px;
-    font-size: 1rem;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    background-color: #fff;
-    color: #333;
-  }
-  
-  /* Event information display */
-  .event-info {
-    margin-top: 30px;
-    padding: 20px;
-    background-color: #e8f5e9; /* A soft light green to emphasize the info */
-    border-radius: 8px;
-    color: #2e7d32;
-    text-align: center;
-  }
-  
-  .event-info h2 {
-    font-size: 1.8rem;
-    margin-bottom: 10px;
-  }
-  
-  .event-info p {
-    font-size: 1rem;
-    line-height: 1.5;
-  }
-  
-  /* Responsive adjustments */
-  @media (max-width: 768px) {
-    .what-if-page {
-      margin-left: 0; /* Remove the left margin on small screens */
-      padding: 20px;
-    }
-    
-    .what-if-content {
-      margin: 0 10px;
-    }
-  }
-
-  /* WhatIfPage.css */
-
-/* Main page container */
-.what-if-page {
-    margin-left: 220px; /* Space for the fixed vertical navbar */
-    padding: 40px;
-    background-color: #f0f0f0;
-    min-height: 100vh;
-  }
-  
-  /* Content container */
-  .what-if-content {
-    background-color: #fff;
-    padding: 30px;
-    border-radius: 10px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-    max-width: 800px;
-    margin: 0 auto;
-  }
-  
-  /* Header styling */
-  .what-if-content__header {
-    font-size: 2.5rem;
-    color: #333;
-    text-align: center;
-    margin-bottom: 20px;
-  }
-  
-  /* Dropdown area */
-  .what-if-content__dropdown {
-    margin-bottom: 20px;
-  }
-  
-  .what-if-content__label {
-    font-size: 1rem;
-    color: #333;
-    margin-bottom: 5px;
-  }
-  
-  /* Event info area */
-  .what-if-content__event-info {
-    margin-top: 30px;
-    padding: 20px;
-    background-color: #e8f5e9;
-    border-radius: 8px;
-    color: #2e7d32;
-    text-align: center;
-  }
-  
-  .what-if-content__event-header {
-    font-size: 1.8rem;
-    margin-bottom: 10px;
-  }
-  
-  .what-if-content__event-text {
-    font-size: 1rem;
-    line-height: 1.5;
-  }
-  
-  /* House Popup Modal Styles */
-  .house-popup-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 2000;
-  }
-  
-  .house-popup {
-    background-color: #fff;
-    padding: 30px;
-    border-radius: 10px;
-    width: 90%;
-    max-width: 400px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-  }
-  
-  .house-popup h2 {
-    font-size: 1.8rem;
-    margin-bottom: 20px;
-    text-align: center;
-  }
-  
-  .house-popup__question p {
-    margin-bottom: 10px;
-    font-size: 1rem;
-  }
-  
-  .house-popup__question label {
-    margin-right: 15px;
-    font-size: 1rem;
-  }
-  
-  .house-popup__cost {
-    margin-top: 15px;
-  }
-  
-  .house-popup__cost label {
-    display: block;
-    margin-bottom: 5px;
-  }
-  
-  .house-popup__cost input {
-    width: 100%;
-    padding: 8px;
-    font-size: 1rem;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-  }
-  
-  .house-popup__actions {
-    margin-top: 20px;
-    display: flex;
-    justify-content: space-around;
-  }
-  
-  .house-popup__actions button {
-    padding: 10px 20px;
-    font-size: 1rem;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-  }
-  
-  .house-popup__actions button[type="submit"] {
-    background-color: #4CAF50;
-    color: #fff;
-  }
-  
-  .house-popup__actions button[type="button"] {
-    background-color: #ccc;
-    color: #333;
-  }
-  
-  /* Responsive adjustments */
-  @media (max-width: 768px) {
-    .what-if-page {
-      margin-left: 0;
-      padding: 20px;
-    }
-    .what-if-content {
-      margin: 0 10px;
-    }
-  }
-  .marriage-popup-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.5); /* Dark overlay */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 2000;
-  }
-  
-  .marriage-popup {
-    background-color: #fff;
-    padding: 30px;
-    border-radius: 10px;
-    width: 90%;
-    max-width: 400px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-  }
-
-
-  .retirement-popup-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 2000;
-  }
-  
-  .retirement-popup {
-    background-color: white;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-    width: 90%;
-    max-width: 400px;
-  }
-  
-  .retirement-popup h2 {
-    margin-bottom: 20px;
-  }
-  
-  .retirement-popup label {
-    display: block;
-    margin-bottom: 10px;
-    font-size: 16px;
-  }
-  
-  .retirement-popup input {
-    width: 100%;
-    padding: 8px;
-    margin-bottom: 20px;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-  }
-  
-  .retirement-popup button {
-    margin-right: 10px;
-    padding: 8px 12px;
-    background-color: #4CAF50;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-  }
-  
-  .retirement-popup button:hover {
-    background-color: #45A049;
-  }
-  
-  
-  
-  
+}

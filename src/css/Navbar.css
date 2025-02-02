@@ -1,60 +1,126 @@
 /* Navbar.css */
 .navbar {
-  background-color: linear-gradient(0deg, #6a11cb 0%, #2575fc 100%);
-  padding: 20px;
+  background: linear-gradient(
+    135deg,
+    #6a11cb,
+    #2575fc
+  ); /* Gradient background */
+  padding: 30px 20px;
   display: flex;
-  flex-direction: column; /* Make the navbar vertical */
-  align-items: flex-start; /* Align items to the left */
-  border-radius: 10px;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-  width: 164px; /* Set a fixed width for the navbar */
-  height: 100vh; /* Make the navbar span the full height */
-  position: fixed; /* Fix the navbar to the left side of the page */
+  flex-direction: column; /* Vertical layout */
+  align-items: center; /* Center items horizontally */
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2); /* Soft shadow */
+  width: 220px; /* Fixed width */
+  height: 100vh; /* Full height */
+  position: fixed;
   top: 0;
   left: 0;
+  z-index: 1000;
+  opacity: 0; /* Start with opacity 0 */
+  animation: fadeIn 0.8s ease-in 0.2s forwards; /* Fade-in animation */
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateX(-20px); /* Slide in from the left */
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
 }
 
 /* Navbar logo */
 .navbar .logo {
   font-size: 1.8rem;
   color: white;
-  font-weight: bold;
+  font-weight: 700; /* Bold text */
   text-transform: uppercase;
   letter-spacing: 2px;
-  margin-bottom: 30px; /* Space below the logo */
+  margin-bottom: 40px; /* Space below the logo */
+  text-align: center;
+  opacity: 0; /* Start with opacity 0 */
+  animation: fadeIn 0.8s ease-in 0.4s forwards; /* Fade-in animation */
 }
 
 /* Navbar links */
 .navbar ul {
   list-style-type: none; /* Remove bullet points */
-  padding-left: 0; /* Remove padding */
+  padding: 0;
+  margin: 0;
+  width: 100%; /* Full width */
 }
 
 .navbar li {
-  display: block; /* Make each item block-level so they stack vertically */
-  margin-bottom: 20px; /* Space between links */
+  margin-bottom: 15px; /* Space between links */
+  opacity: 0; /* Start with opacity 0 */
+  animation: fadeIn 0.8s ease-in forwards; /* Fade-in animation */
+}
+
+/* Staggered fade-in for links */
+.navbar li:nth-child(1) {
+  animation-delay: 0.6s;
+}
+.navbar li:nth-child(2) {
+  animation-delay: 0.8s;
+}
+.navbar li:nth-child(3) {
+  animation-delay: 1s;
+}
+.navbar li:nth-child(4) {
+  animation-delay: 1.2s;
 }
 
 .navbar a {
   color: white;
   text-decoration: none;
-  font-size: 1.2rem;
-  font-weight: 600;
-  transition: color 0.3s ease;
-  display: block; /* Make each link take up the full width of the container */
-  padding: 10px;
+  font-size: 1.1rem;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  display: block; /* Full width */
+  padding: 12px 20px;
+  border-radius: 8px; /* Rounded corners */
+  text-align: center;
 }
 
+/* Hover and active states */
 .navbar a:hover {
-  color: #45a049; /* Darker green when hovered */
+  background-color: rgba(255, 255, 255, 0.1); /* Subtle hover effect */
+  transform: translateX(10px); /* Slide to the right on hover */
 }
 
-/* Optional: Add responsive behavior */
+.navbar a.active {
+  background-color: rgba(255, 255, 255, 0.2); /* Highlight active link */
+  font-weight: 600;
+}
+
+/* Responsive behavior */
 @media (max-width: 768px) {
   .navbar {
-    background-color: linear-gradient(0deg, #6a11cb 0%, #2575fc 100%);
-    width: 100%; /* Take up full width on smaller screens */
-    height: auto;
+    width: 100%; /* Full width on smaller screens */
+    height: auto; /* Auto height */
     position: static; /* Remove fixed positioning */
+    padding: 20px;
+  }
+
+  .navbar .logo {
+    margin-bottom: 20px; /* Reduce space below logo */
+  }
+
+  .navbar ul {
+    display: flex;
+    flex-direction: row; /* Horizontal layout on smaller screens */
+    justify-content: center;
+    gap: 10px; /* Space between links */
+  }
+
+  .navbar li {
+    margin-bottom: 0; /* Remove vertical spacing */
+  }
+
+  .navbar a {
+    padding: 10px 15px; /* Smaller padding */
+    font-size: 1rem; /* Smaller font size */
   }
 }

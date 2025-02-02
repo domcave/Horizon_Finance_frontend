@@ -30,8 +30,9 @@ const LoginPage = () => {
       );
 
       localStorage.setItem("userToken", response.data.access_token);
+      localStorage.setItem("username", response.data.username);
 
-      navigate("/dashboard");
+      window.location.href = "/dashboard";
     } catch (err) {
       setError(err.response?.data?.message || "Invalid login credentials");
     }

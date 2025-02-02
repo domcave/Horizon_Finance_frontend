@@ -4,7 +4,12 @@ import "../css/Navbar.css"; // Import the CSS
 
 function Navbar() {
   return (
-    <div className="navbar">
+    <div
+      className="navbar"
+      style={{
+        background: "linear-gradient(0deg, #6a11cb 0%, #2575fc 100%)",
+      }}
+    >
       <ul>
         <li>
           <Link to="/">🏠 Home</Link>
