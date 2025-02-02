@@ -1,11 +1,11 @@
 import { usePlaidLink } from "react-plaid-link";
 import axios from "axios";
 import { useState, useEffect } from "react";
-import "../css/LoginSignup.css";
+import "../css/ConnectBank.css";
 
 axios.defaults.baseURL = "http://127.0.0.1:5000";
 
-export function ConnectBank({ user_id }) {
+export function ConnectBank({ user_id, onSuccess }) {
   const [linkToken, setLinkToken] = useState(null);
   const [publicToken, setPublicToken] = useState(null);
 
@@ -48,6 +48,7 @@ export function ConnectBank({ user_id }) {
                 }
               );
               console.log(response.data);
+              onSuccess();
             } catch (error) {
               console.error("Error exchanging public token:", error);
             }
@@ -56,7 +57,7 @@ export function ConnectBank({ user_id }) {
             console.log("Exited link before establishing connection");
           },
         }
-      : {} // Prevent errors if linkToken is null
+      : {}
   );
 
   return (
@@ -67,7 +68,7 @@ export function ConnectBank({ user_id }) {
 }
 
 export async function getTransactions30Days(username) {
-  const response = await axios.get(`/plaid/transactions/30days`, {
+  const response = await axios.get(`/transactions/30days`, {
     params: { username },
   });
   console.log(response);
@@ -75,7 +76,7 @@ export async function getTransactions30Days(username) {
 }
 
 export async function getTransactionsThisMonth(username) {
-  const response = await axios.get(`/plaid/transactions/month`, {
+  const response = await axios.get(`/transactions/month`, {
     params: { username },
   });
   console.log(response);
@@ -83,7 +84,7 @@ export async function getTransactionsThisMonth(username) {
 }
 
 export async function getInvestmentHoldings(username) {
-  const response = await axios.get(`/plaid/investments/holdings`, {
+  const response = await axios.get(`/investments/holdings`, {
     params: { username },
   });
   console.log(response);
@@ -91,7 +92,7 @@ export async function getInvestmentHoldings(username) {
 }
 
 export async function getAccountBalances(username) {
-  const response = await axios.get(`/plaid/accounts/balance`, {
+  const response = await axios.get(`/accounts/balance`, {
     params: { username },
   });
   console.log(response);

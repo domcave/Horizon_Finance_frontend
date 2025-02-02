@@ -3,27 +3,50 @@ import { useNavigate } from "react-router-dom";
 import "../css/LoginSignup.css";
 import InputField from "./InputField";
 import { ConnectBank } from "../services/plaid_service";
+import axios from "axios";
 
 const FinancialForm = () => {
   const navigate = useNavigate();
   const [error, setError] = useState("");
+  const username = localStorage.getItem("username");
+  const [isBankConnected, setIsBankConnected] = useState(false); // New state to track bank connection
+  const [income, setIncome] = useState("");
+  const [age, setAge] = useState("");
+  const isButtonDisabled = !income || !age || !isBankConnected;
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-
-    const formData = new FormData(e.target);
-    const income = formData.get("income");
-    const age = formData.get("age");
 
     if (!income || !age) {
       setError("Both fields are required.");
       return;
     }
 
-    console.log("Income:", income);
-    console.log("Age:", age);
+    try {
+      const response = await axios.post(
+        "http://127.0.0.1:5000/user/add_income_and_age",
+        {
+          income: income,
+          age: age,
+          username: username,
+        },
+        {
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
 
-    navigate("/dashboard");
+      localStorage.setItem("userToken", response.data.access_token);
+
+      navigate("/dashboard");
+    } catch (err) {
+      setError(err.response?.data?.message || "Error updating profile");
+    }
+  };
+
+  const handleBankConnectSuccess = () => {
+    setIsBankConnected(true);
   };
 
   return (
@@ -38,6 +61,7 @@ const FinancialForm = () => {
             name="income"
             placeholder="Enter your income"
             label="Income"
+            onChange={(e) => setIncome(e.target.value)}
           />
           <InputField
             id="age"
@@ -45,16 +69,22 @@ const FinancialForm = () => {
             name="age"
             placeholder="Enter your age"
             label="Age"
+            onChange={(e) => setAge(e.target.value)}
           />
         </div>
         <div className="button-container">
-          <ConnectBank></ConnectBank>
+          <ConnectBank
+            user_id={username}
+            onSuccess={handleBankConnectSuccess}
+          ></ConnectBank>
           <button
-            type="button"
+            type="submit"
             className="cancel-button"
-            onClick={() => navigate("/")}
+            onClick={handleSubmit}
+            style={{ backgroundColor: isButtonDisabled ? "#ccc" : "#5f11cb" }} // Grey out button if disabled
+            disabled={isButtonDisabled} // Disable button if any condition is not met
           >
-            Cancel
+            Continue
           </button>
         </div>
       </form>

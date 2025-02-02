@@ -16,7 +16,6 @@ function App() {
     !!localStorage.getItem("userToken")
   );
 
-  // Listen for changes in authentication (localStorage)
   useEffect(() => {
     setAuthenticated(!!localStorage.getItem("userToken"));
   }, []);
@@ -24,7 +23,6 @@ function App() {
   return (
     <Router>
       <Routes>
-        {/* Login Route */}
         <Route
           path="/login"
           element={
@@ -35,8 +33,6 @@ function App() {
             )
           }
         />
-
-        {/* Sign Up Route */}
         <Route
           path="/signup"
           element={
@@ -47,26 +43,18 @@ function App() {
             )
           }
         />
-
-        {/* Dashboard Route (Protected) */}
         <Route
           path="/dashboard"
           element={authenticated ? <Dashboard /> : <Navigate to="/login" />}
         />
-
-        {/* What If Route (Protected) */}
         <Route
           path="/what-if"
           element={authenticated ? <WhatIf /> : <Navigate to="/login" />}
         />
-
-        {/* Financials Route (Protected) */}
         <Route
           path="/financials"
           element={authenticated ? <FinancialForm /> : <Navigate to="/login" />}
         />
-
-        {/* Catch-All Route (redirects to dashboard or login based on auth) */}
         <Route
           path="*"
           element={<Navigate to={authenticated ? "/dashboard" : "/login"} />}
