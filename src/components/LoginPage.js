@@ -31,6 +31,7 @@ const LoginPage = () => {
 
       localStorage.setItem("userToken", response.data.access_token);
       localStorage.setItem("username", response.data.username);
+      localStorage.setItem("first_name", response.data.first_name);
 
       window.location.href = "/dashboard";
     } catch (err) {

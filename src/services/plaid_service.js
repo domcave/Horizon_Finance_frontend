@@ -8,6 +8,7 @@ axios.defaults.baseURL = "http://127.0.0.1:5000";
 export function ConnectBank({ user_id, onSuccess }) {
   const [linkToken, setLinkToken] = useState(null);
   const [publicToken, setPublicToken] = useState(null);
+  const [isConnected, setIsConnected] = useState(false); // New state to track connection
 
   useEffect(() => {
     async function fetch() {
@@ -48,6 +49,7 @@ export function ConnectBank({ user_id, onSuccess }) {
                 }
               );
               console.log(response.data);
+              setIsConnected(true); // Set to true once the bank account is connected
               onSuccess();
             } catch (error) {
               console.error("Error exchanging public token:", error);
@@ -61,8 +63,12 @@ export function ConnectBank({ user_id, onSuccess }) {
   );
 
   return (
-    <button onClick={() => open()} disabled={!ready}>
-      Connect a bank account
+    <button
+      onClick={() => open()}
+      disabled={!ready || isConnected} // Disable button after success
+      className={isConnected ? "disabled-button" : ""} // Add disabled styling
+    >
+      {isConnected ? "Bank Account Connected" : "Connect a bank account"}
     </button>
   );
 }
@@ -72,7 +78,7 @@ export async function getTransactions30Days(username) {
     params: { username },
   });
   console.log(response);
-  return response
+  return response;
 }
 
 export async function getTransactionsThisMonth(username) {
@@ -80,7 +86,7 @@ export async function getTransactionsThisMonth(username) {
     params: { username },
   });
   console.log(response);
-  return response
+  return response;
 }
 
 export async function getInvestmentHoldings(username) {
@@ -88,7 +94,7 @@ export async function getInvestmentHoldings(username) {
     params: { username },
   });
   console.log(response);
-  return response
+  return response;
 }
 
 export async function getAccountBalances(username) {
@@ -96,5 +102,5 @@ export async function getAccountBalances(username) {
     params: { username },
   });
   console.log(response);
-  return response
+  return response;
 }

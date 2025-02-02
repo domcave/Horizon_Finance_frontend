@@ -17,6 +17,7 @@ function Dashboard({ props }) {
   const [accountBalances, setAccountBalances] = useState(null);
 
   const username = localStorage.getItem("username");
+  const first_name = localStorage.getItem("first_name");
 
   useEffect(() => {
     async function fetchInitialData() {
@@ -46,7 +47,7 @@ function Dashboard({ props }) {
       <Navbar />
       <div className="dashboard-content">
         <header className="dashboard-header">
-          <h1>Welcome back, {username}!</h1>
+          <h1>Welcome back, {first_name}!</h1>
         </header>
         <div className="chart-row">
           <div className="chart-card">

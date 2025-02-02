@@ -32,7 +32,9 @@ const WhatIfPage = () => {
       <Navbar />
       <div className="header-container">
         <h1 className="page-title">What If</h1>
-        <p className="page-subtitle">Explore life events and their financial implications.</p>
+        <p className="page-subtitle">
+          Explore life events and their financial implications.
+        </p>
         <Dropdown onSelect={handleEventSelect} />
       </div>
 
@@ -40,7 +42,7 @@ const WhatIfPage = () => {
         <div className="event-info-card">
           <h2 className="event-title">You selected: {selectedEvent}</h2>
           <p className="event-description">
-            Here is more information about the event: {selectedEvent}.
+            Here is more information about the event.
           </p>
         </div>
       )}
@@ -83,7 +85,9 @@ const WhatIfPage = () => {
 
       {selectedEvent === "Retirement" && retirementRecommendation && (
         <div className="recommendation-card">
-          <h3 className="recommendation-title">🌴 Retirement Recommendation:</h3>
+          <h3 className="recommendation-title">
+            🌴 Retirement Recommendation:
+          </h3>
           <p>{retirementRecommendation}</p>
         </div>
       )}

@@ -1,10 +1,11 @@
 import React, { useState, useEffect, useRef } from "react";
 import "../css/Popup.css";
-import { getHouseRecommendation } from "../services/recommendation_service"; // Import your API service
+import { getHouseRecommendation } from "../services/recommendation_service";
 
 const HousePopup = ({ isOpen, onClose, setRecommendation }) => {
   const [hasHouse, setHasHouse] = useState(null);
   const [houseCost, setHouseCost] = useState(0);
+  const [loading, setLoading] = useState(false); // Loading state
   const popupRef = useRef(null);
 
   useEffect(() => {
@@ -26,6 +27,8 @@ const HousePopup = ({ isOpen, onClose, setRecommendation }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
+    setLoading(true); // Set loading to true when submitting
+
     try {
       // Get the username from localStorage
       const username = localStorage.getItem("username");
@@ -33,6 +36,7 @@ const HousePopup = ({ isOpen, onClose, setRecommendation }) => {
       if (!username) {
         console.error("Username not found in local storage");
         setRecommendation("Username is required.");
+        setLoading(false); // Reset loading
         return;
       }
 
@@ -47,6 +51,7 @@ const HousePopup = ({ isOpen, onClose, setRecommendation }) => {
       if (isNaN(params.owned_house_price) || params.owned_house_price < 0) {
         console.error("Invalid value for house cost");
         setRecommendation("Invalid value for house cost.");
+        setLoading(false); // Reset loading
         return;
       }
 
@@ -61,9 +66,10 @@ const HousePopup = ({ isOpen, onClose, setRecommendation }) => {
     } catch (error) {
       console.error("Error getting recommendation:", error);
       setRecommendation("Error occurred while fetching recommendation.");
+    } finally {
+      setLoading(false);
+      onClose();
     }
-
-    onClose();
   };
 
   if (!isOpen) return null;
@@ -111,7 +117,9 @@ const HousePopup = ({ isOpen, onClose, setRecommendation }) => {
           )}
 
           <div className="popup__actions">
-            <button type="submit">Submit</button>
+            <button type="submit" disabled={loading}>
+              {loading ? "Loading..." : "Submit"}{" "}
+            </button>
             <button type="button" onClick={onClose}>
               Close
             </button>

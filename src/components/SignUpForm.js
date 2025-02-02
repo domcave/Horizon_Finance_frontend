@@ -53,6 +53,7 @@ const SignUpForm = ({ setAuthenticated }) => {
       if (loginResponse.data.access_token) {
         localStorage.setItem("userToken", loginResponse.data.access_token);
         localStorage.setItem("username", username);
+        localStorage.setItem("first_name", firstName);
         console.log("User registered and logged in successfully");
         console.log("Username:", username);
         setAuthenticated(true);

@@ -1,12 +1,13 @@
 import React, { useState, useEffect, useRef } from "react";
 import "../css/Popup.css";
-import { getMarriageRecommendation } from "../services/recommendation_service"; // Ensure this import is correct
+import { getMarriageRecommendation } from "../services/recommendation_service";
 
 const MarriagePopup = ({ isOpen, onClose, setRecommendation }) => {
   const [spouseIncome, setSpouseIncome] = useState("");
   const [expectingChildren, setExpectingChildren] = useState(false);
   const [numberOfChildren, setNumberOfChildren] = useState(0);
   const [sendChildrenToCollege, setSendChildrenToCollege] = useState(false);
+  const [loading, setLoading] = useState(false); // Track loading state
   const popupRef = useRef(null);
 
   useEffect(() => {
@@ -27,8 +28,9 @@ const MarriagePopup = ({ isOpen, onClose, setRecommendation }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
+    setLoading(true); // Set loading to true when submitting
+
     try {
-      // Get the username from local storage
       const username = localStorage.getItem("username");
 
       if (!username) {
@@ -37,7 +39,6 @@ const MarriagePopup = ({ isOpen, onClose, setRecommendation }) => {
         return;
       }
 
-      // Prepare parameters for the API call, sanitize inputs
       const params = {
         username: username,
         num_kids: numberOfChildren || 0, // Default to 0 if empty
@@ -47,14 +48,12 @@ const MarriagePopup = ({ isOpen, onClose, setRecommendation }) => {
         years_to_college: 18, // Default to 18 if empty
       };
 
-      // Check if years_to_college is a valid number
       if (isNaN(params.years_to_college) || params.years_to_college <= 0) {
         console.error("Invalid value for years_to_college");
         setRecommendation("Invalid value for years to college.");
         return;
       }
 
-      // Call the API function to get the recommendation
       const response = await getMarriageRecommendation(params);
       console.log(response.data.recommendation);
       if (response && response.data && response.data.recommendation) {
@@ -66,9 +65,10 @@ const MarriagePopup = ({ isOpen, onClose, setRecommendation }) => {
     } catch (error) {
       console.error("Error getting recommendation:", error);
       setRecommendation("Error occurred while fetching recommendation.");
+    } finally {
+      setLoading(false); // Reset loading state after request is complete
+      onClose();
     }
-
-    onClose();
   };
 
   if (!isOpen) return null;
@@ -153,7 +153,9 @@ const MarriagePopup = ({ isOpen, onClose, setRecommendation }) => {
           )}
 
           <div className="popup__actions">
-            <button type="submit">Submit</button>
+            <button type="submit" disabled={loading}>
+              {loading ? "Loading..." : "Submit"}{" "}
+            </button>
             <button type="button" onClick={onClose}>
               Close
             </button>

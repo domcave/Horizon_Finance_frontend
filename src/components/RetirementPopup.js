@@ -9,6 +9,7 @@ const RetirementPopup = ({ isOpen, onClose, setRecommendation }) => {
   const [hasRetirementAccount, setHasRetirementAccount] = useState("");
   const [accountAPY, setAccountAPY] = useState("");
   const [accountBalance, setAccountBalance] = useState("");
+  const [loading, setLoading] = useState(false); // Loading state
   const popupRef = useRef(null);
 
   useEffect(() => {
@@ -33,10 +34,13 @@ const RetirementPopup = ({ isOpen, onClose, setRecommendation }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
+    setLoading(true); // Set loading to true when submitting
+
     const username = localStorage.getItem("username");
     if (!username) {
       console.error("Username not found in local storage");
       setRecommendation("Username is required.");
+      setLoading(false); // Reset loading
       return;
     }
 
@@ -52,6 +56,7 @@ const RetirementPopup = ({ isOpen, onClose, setRecommendation }) => {
     if (isNaN(targetAmount) || targetAmount <= 0) {
       console.error("Invalid target amount");
       setRecommendation("Invalid target amount.");
+      setLoading(false); // Reset loading
       return;
     }
 
@@ -67,9 +72,10 @@ const RetirementPopup = ({ isOpen, onClose, setRecommendation }) => {
     } catch (error) {
       console.error("Error getting recommendation:", error);
       setRecommendation("Error occurred while fetching recommendation.");
+    } finally {
+      setLoading(false); // Reset loading after the request completes
+      onClose();
     }
-
-    onClose();
   };
 
   if (!isOpen) return null;
@@ -150,13 +156,17 @@ const RetirementPopup = ({ isOpen, onClose, setRecommendation }) => {
                 value={accountBalance}
                 onChange={(e) => setAccountBalance(e.target.value)}
               />
-              <button onClick={handleSubmit}>Submit</button>
+              <button onClick={handleSubmit} disabled={loading}>
+                {loading ? "Loading..." : "Submit"}{" "}
+              </button>
               <button onClick={prevStep}>Back</button>
             </div>
           ) : (
             <div>
               <p>No retirement account information provided.</p>
-              <button onClick={handleSubmit}>Submit</button>
+              <button onClick={handleSubmit} disabled={loading}>
+                {loading ? "Loading..." : "Submit"}{" "}
+              </button>
               <button onClick={prevStep}>Back</button>
             </div>
           )
