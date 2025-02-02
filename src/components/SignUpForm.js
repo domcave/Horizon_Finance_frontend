@@ -1,14 +1,12 @@
-import React, { useOptimistic, useState } from "react";
+import React, { useState } from "react";
 import InputField from "./InputField";
-import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import "../css/LoginSignup.css";
 
-const SignUpForm = () => {
+const SignUpForm = ({ setAuthenticated }) => {
   const [error, setError] = useState("");
-  const navigate = useNavigate();
 
-  const handleSubmit = async (event, setAuthenticated) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
 
     const formData = new FormData(event.target);
@@ -16,8 +14,8 @@ const SignUpForm = () => {
     const fullName = formData.get("name").trim();
     const username = formData.get("username").trim();
     const password = formData.get("password").trim();
+    
 
-    // Basic validation
     if (!email || !fullName || !username || !password) {
       alert("Please fill out all fields.");
       return;
@@ -29,21 +27,18 @@ const SignUpForm = () => {
       const registrationResponse = await axios.post(
         "http://127.0.0.1:5000/auth/register",
         {
-          email,
+          email: email,
           first_name: firstName,
           last_name: lastName,
-          username,
-          password,
+          username: username,
+          password: password,
         },
         {
           headers: {
             "Content-Type": "application/json",
           },
-        },
-        { withCredentials: true }
+        }
       );
-
-      console.log("Registration Response:", registrationResponse);
 
       const loginResponse = await axios.post(
         "http://127.0.0.1:5000/auth/login",
@@ -55,25 +50,18 @@ const SignUpForm = () => {
         }
       );
 
-      console.log("Login Response:", loginResponse);
-      console.log("Access Token:", loginResponse.data.access_token);
-
       if (loginResponse.data.access_token) {
         localStorage.setItem("userToken", loginResponse.data.access_token);
         localStorage.setItem("username", username);
-        console.log("Token saved:", loginResponse.data.access_token);
-
-        setAuthenticated(true); // Set authentication state
-        navigate("/financials"); // Redirect to financials page
+        console.log("User registered and logged in successfully");
+        console.log("Username:", username);
+        setAuthenticated(true);
+        window.location.href = "/financials";
       } else {
         setError("Login failed. Please check your credentials.");
       }
     } catch (err) {
-      // Handle error during registration or login
-      const errorMessage =
-        err.response?.data?.message || "Registration failed, try again!";
-      setError(errorMessage);
-      console.error("Error:", errorMessage);
+      setError("Registration failed, try again.");
     }
   };
 
