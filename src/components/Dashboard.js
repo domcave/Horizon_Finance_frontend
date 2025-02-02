@@ -2,85 +2,60 @@ import React from "react";
 import Navbar from "./Navbar";
 import Chart from "./Chart";
 import "../css/Dashboard.css";
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 import * as PlaidService from "../../src/services/plaid_service";
 import * as RecommendationService from "../../src/services/recommendation_service";
 import CardLineChart from "./CardLineChart";
+import CardPieChart from "./CardPieChart";
+import CardBarChart from './CardBarChart';
 
-function Dashboard() {
+function Dashboard({ props }) {
 
-  const [transactions30, setTransactions30] = useState({})
-  const [transactionsMonth, setTransactionsMonth] = useState({})
-  const [investments, setInvestments] = useState({})
-  const [accountBalances, setAccountBalances] = useState({})
+  const [transactions30, setTransactions30] = useState(null)
+  const [transactionsMonth, setTransactionsMonth] = useState(null)
+  const [investments, setInvestments] = useState(null)
+  const [accountBalances, setAccountBalances] = useState(null)
+
+  // Fetch data only on initial mount
+  useEffect(() => {
+    async function fetchInitialData() {
+      try {
+        let response = await PlaidService.getTransactions30Days("user1");
+        response = response.data;
+        setTransactions30(response);
+        response = (await PlaidService.getTransactionsThisMonth("user1"));
+        response = response.data;
+        setTransactionsMonth(response);
+        response = (await PlaidService.getInvestmentHoldings("user1"));
+        response = response.data;
+        setInvestments(response);
+        response = (await PlaidService.getAccountBalances("user1"));
+        response = response.data;
+        setAccountBalances(response);
+      } catch (error) {
+        console.error("Error fetching account data:", error);
+      }
+    }
+
+    fetchInitialData();
+  }, []); // Empty dependency array ensures this runs only once when the component mounts
 
   return (
     <div className="dashboard-page">
       <Navbar />
       <div className="cards">
         <div className="card">
-          {/* {<CardLineChart transactions={transactions30} /> } */}
-          <Chart />
+          {transactions30 ? <CardLineChart transactions={transactions30}/> : <div>Loading user data...</div>}
         </div>
         <div className="card">
-          <Chart />
+          {transactions30 ? <CardPieChart transactions={transactions30}/> : <div>Loading user data...</div>}
         </div>
         <div className="card">
-          <Chart />
-        </div>
-        <div className="card">
-          <Chart />
+          {investments ? <CardBarChart holdings={investments}/> : <div>Loading user data...</div>}
         </div>
 
       </div>
-        <PlaidService.ConnectBank user_id="user1" />
-        <button
-          onClick={() => {
-            setTransactions30(PlaidService.getTransactions30Days("user1").json());
-          }}
-        >
-          Click to get transaction data of last 30 days
-        </button>
-        <button
-          onClick={() => {
-            setTransactionsMonth(PlaidService.getTransactionsThisMonth("user1").json());
-          }}
-        >
-          Click to get transaction data of this month
-        </button>
-        <button
-          onClick={() => {
-            setInvestments(PlaidService.getInvestmentHoldings("user1").json());
-          }}
-        >
-          Click to get investment data
-        </button>
-        <button
-          onClick={() => {
-            setAccountBalances(PlaidService.getAccountBalances("user1").json());
-          }}
-        >
-          Click to get account balance data
-        </button>
-        <button onClick={() => {RecommendationService.getHouseRecommendation({
-          username: "user1",
-          owned_house_price: 250000
-        })}}>Click to get new house recommendation</button>
-        <button onClick={() => {RecommendationService.getMarriageRecommendation({
-            username: "user1",
-            num_kids: 2,
-            arr: 0.08,
-            spouse_income: 65000,
-            save: true,
-            years_to_college: 18
-        })}}>Click to get marraige recommendation</button>
-        <button onClick={() => {RecommendationService.getRetirementRecommendation({
-            username: "user1",
-            savings: 300000,
-            arr: 0.07,
-            wd_rate: 0.04
-        })}}>Click to get retirement recommendation</button>
       
     </div>
   );
