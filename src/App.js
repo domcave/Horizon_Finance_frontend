@@ -21,7 +21,7 @@ function App() {
   }, []);
 
   return (
-    <Router basename="https://domcave.github.io/Horizon_Finance_frontend/">
+    <Router>
       <Routes>
         <Route
           path="/login"
