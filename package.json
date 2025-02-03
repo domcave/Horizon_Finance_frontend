@@ -2,7 +2,6 @@
   "name": "horizon_finance_frontend",
   "version": "0.1.0",
   "private": true,
-  // "homepage": "https://domcave.github.io/horizon_finance_frontend",
   "dependencies": {
     "axios": "^1.7.9",
     "browserslist": "^4.6.3",
