@@ -10,16 +10,16 @@ on:
 
 jobs:
   if_merged:
-    if: ${{ github.event.pull_request == true && github.event.pull_request.merged == false}}
+    if: ${{ github.event_name == 'pull_request' && github.event.pull_request.merged == false }}
     runs-on: ubuntu-latest
     steps:
     - run: |
-        echo The PR was not merged
+        echo "The PR was not merged"
         exit 1
 
   deploy:
-    needs: if_merged
-
+    # Only run on a push to main or if the PR was merged
+    if: ${{ github.event_name == 'push' || (github.event_name == 'pull_request' && github.event.pull_request.merged == true) }}
     runs-on: ubuntu-latest
     steps:
     - name: 🚚 Get latest code
