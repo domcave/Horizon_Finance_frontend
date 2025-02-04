@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import InputField from "./InputField";
 import axios from "axios";
 import "../css/LoginSignup.css";
@@ -105,9 +106,12 @@ const SignUpForm = ({ setAuthenticated }) => {
       </form>
       <p>
         Already have an account?{" "}
-        <a href="/login" className="signup-link">
+        {/* <a href="/login" className="signup-link">
           Log In
-        </a>
+        </a> */}
+        <Link to="/login">
+          Log In
+        </Link>
       </p>
     </div>
   );

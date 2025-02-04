@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import "../css/LoginSignup.css";
 import axios from "axios";
@@ -64,9 +65,12 @@ const LoginPage = () => {
       </form>
       <p>
         Don't have an account?{" "}
-        <a href="/signup" className="signup-link">
+        {/* <a href="/signup" className="signup-link">
           Sign Up
-        </a>
+        </a> */}
+        <Link to="/signup">
+          Sign Up
+        </Link>
       </p>
     </div>
   );

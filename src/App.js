@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from "react";
 import {
-  BrowserRouter as Router,
+  HashRouter as Router,
   Routes,
   Route,
   Navigate,
+  Link
 } from "react-router-dom";
 import SignUp from "./components/SignUpForm.js";
 import Dashboard from "./components/Dashboard.js";
@@ -21,13 +22,13 @@ function App() {
   }, []);
 
   return (
-    <Router>
+    <Router basename="/login">
       <Routes>
         <Route
           path="/login"
           element={
             authenticated ? (
-              <Navigate to="/dashboard" />
+              <Link to="/dashboard" />
             ) : (
               <LoginPage setAuthenticated={setAuthenticated} />
             )
@@ -37,7 +38,7 @@ function App() {
           path="/signup"
           element={
             authenticated ? (
-              <Navigate to="/dashboard" />
+              <Link to="/dashboard" />
             ) : (
               <SignUp setAuthenticated={setAuthenticated} />
             )
@@ -45,19 +46,19 @@ function App() {
         />
         <Route
           path="/dashboard"
-          element={authenticated ? <Dashboard /> : <Navigate to="/login" />}
+          element={authenticated ? <Dashboard /> : <Link to="/login" />}
         />
         <Route
           path="/what-if"
-          element={authenticated ? <WhatIf /> : <Navigate to="/login" />}
+          element={authenticated ? <WhatIf /> : <Link to="/login" />}
         />
         <Route
           path="/financials"
-          element={authenticated ? <FinancialForm /> : <Navigate to="/login" />}
+          element={authenticated ? <FinancialForm /> : <Link to="/login" />}
         />
         <Route
           path="*"
-          element={<Navigate to={authenticated ? "/dashboard" : "/login"} />}
+          element={<Link to={authenticated ? "/dashboard" : "/login"} />}
         />
       </Routes>
     </Router>
