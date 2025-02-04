@@ -22,7 +22,7 @@ function App() {
   }, []);
 
   return (
-    <Router basename="/login">
+    <Router baseline="/">
       <Routes>
         <Route
           path="/login"
@@ -58,7 +58,7 @@ function App() {
         />
         <Route
           path="*"
-          element={<Link to={authenticated ? "/dashboard" : "/login"} />}
+          element={<Navigate to={authenticated ? "/dashboard" : "/login"} />}
         />
       </Routes>
     </Router>

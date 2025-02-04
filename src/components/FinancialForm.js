@@ -39,7 +39,8 @@ const FinancialForm = () => {
 
       localStorage.setItem("userToken", response.data.access_token);
 
-      navigate("/dashboard");
+      // navigate("#/dashboard");
+      window.location.href = "#/dashboard";
     } catch (err) {
       setError(err.response?.data?.message || "Error updating profile");
     }

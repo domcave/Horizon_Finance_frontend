@@ -58,7 +58,7 @@ const SignUpForm = ({ setAuthenticated }) => {
         console.log("User registered and logged in successfully");
         console.log("Username:", username);
         setAuthenticated(true);
-        window.location.href = "/financials";
+        window.location.href = "#/financials";
       } else {
         setError("Login failed. Please check your credentials.");
       }
