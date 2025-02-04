@@ -1,14 +1,14 @@
 {
   "files": {
-    "main.css": "/Horizon_Finance_frontend/static/css/main.e17f0edb.css",
-    "main.js": "/Horizon_Finance_frontend/static/js/main.f8cee781.js",
-    "static/media/HorizonFinance.png": "/Horizon_Finance_frontend/static/media/HorizonFinance.d2c7f828c28e4a65beec.png",
-    "index.html": "/Horizon_Finance_frontend/index.html",
-    "main.e17f0edb.css.map": "/Horizon_Finance_frontend/static/css/main.e17f0edb.css.map",
-    "main.f8cee781.js.map": "/Horizon_Finance_frontend/static/js/main.f8cee781.js.map"
+    "main.css": "/static/css/main.e17f0edb.css",
+    "main.js": "/static/js/main.619f80ac.js",
+    "static/media/HorizonFinance.png": "/static/media/HorizonFinance.d2c7f828c28e4a65beec.png",
+    "index.html": "/index.html",
+    "main.e17f0edb.css.map": "/static/css/main.e17f0edb.css.map",
+    "main.619f80ac.js.map": "/static/js/main.619f80ac.js.map"
   },
   "entrypoints": [
     "static/css/main.e17f0edb.css",
-    "static/js/main.f8cee781.js"
+    "static/js/main.619f80ac.js"
   ]
 }
