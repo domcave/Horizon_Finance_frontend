@@ -25,7 +25,7 @@ const SignUpForm = ({ setAuthenticated }) => {
 
     try {
       const registrationResponse = await axios.post(
-        "http://127.0.0.1:5000/auth/register",
+        "http://HorizonFinanceLB-1989960674.us-east-1.elb.amazonaws.com:80/auth/register",
         {
           email: email,
           first_name: firstName,
@@ -41,7 +41,7 @@ const SignUpForm = ({ setAuthenticated }) => {
       );
 
       const loginResponse = await axios.post(
-        "http://127.0.0.1:5000/auth/login",
+        "http://HorizonFinanceLB-1989960674.us-east-1.elb.amazonaws.com:80/auth/login",
         { email, password },
         {
           headers: {

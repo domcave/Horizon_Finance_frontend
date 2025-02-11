@@ -24,7 +24,7 @@ const FinancialForm = () => {
 
     try {
       const response = await axios.post(
-        "http://127.0.0.1:5000/user/add_income_and_age",
+        "http://HorizonFinanceLB-1989960674.us-east-1.elb.amazonaws.com:80/user/add_income_and_age",
         {
           income: income,
           age: age,
