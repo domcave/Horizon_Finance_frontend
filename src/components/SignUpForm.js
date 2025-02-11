@@ -14,7 +14,6 @@ const SignUpForm = ({ setAuthenticated }) => {
     const fullName = formData.get("name").trim();
     const username = formData.get("username").trim();
     const password = formData.get("password").trim();
-    
 
     if (!email || !fullName || !username || !password) {
       alert("Please fill out all fields.");
@@ -67,49 +66,54 @@ const SignUpForm = ({ setAuthenticated }) => {
   };
 
   return (
-    <div className="signup-container">
-      <h2>Create Your Account</h2>
-      {error && <p className="error-message">{error}</p>}
-      <form onSubmit={handleSubmit}>
-        <InputField
-          id="email"
-          type="email"
-          name="email"
-          placeholder="you@example.com"
-          label="Email"
-        />
-        <InputField
-          id="name"
-          type="text"
-          name="name"
-          placeholder="John Doe"
-          label="Full Name"
-        />
-        <InputField
-          id="username"
-          type="text"
-          name="username"
-          placeholder="johndoe"
-          label="Username"
-        />
-        <InputField
-          id="password"
-          type="password"
-          name="password"
-          placeholder="Enter your password"
-          label="Password"
-        />
-        <button type="submit" className="submit-button">
-          Sign Up
-        </button>
-      </form>
-      <p>
-        Already have an account?{" "}
-        <a href="/login" className="signup-link">
-          Log In
-        </a>
-      </p>
-    </div>
+    <>
+      <div className="container">
+        <h1 className="welcome-title">Welcome to Horizon Finance!</h1>
+        <div className="signup-container">
+          <h2>Create Your Account</h2>
+          {error && <p className="error-message">{error}</p>}
+          <form onSubmit={handleSubmit}>
+            <InputField
+              id="email"
+              type="email"
+              name="email"
+              placeholder="you@example.com"
+              label="Email"
+            />
+            <InputField
+              id="name"
+              type="text"
+              name="name"
+              placeholder="John Doe"
+              label="Full Name"
+            />
+            <InputField
+              id="username"
+              type="text"
+              name="username"
+              placeholder="johndoe"
+              label="Username"
+            />
+            <InputField
+              id="password"
+              type="password"
+              name="password"
+              placeholder="Enter your password"
+              label="Password"
+            />
+            <button type="submit" className="submit-button">
+              Sign Up
+            </button>
+          </form>
+          <p>
+            Already have an account?{" "}
+            <a href="/login" className="signup-link">
+              Log In
+            </a>
+          </p>
+        </div>
+      </div>
+    </>
   );
 };
 

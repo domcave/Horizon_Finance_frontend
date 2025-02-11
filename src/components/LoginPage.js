@@ -40,35 +40,40 @@ const LoginPage = () => {
   };
 
   return (
-    <div className="signup-container">
-      <h2>Log In</h2>
-      {error && <p className="error-message">{error}</p>}
-      <form onSubmit={handleSubmit}>
-        <InputField
-          id="email"
-          type="email"
-          name="email"
-          placeholder="you@example.com"
-          label="Email"
-        />
-        <InputField
-          id="password"
-          type="password"
-          name="password"
-          placeholder="Enter your password"
-          label="Password"
-        />
-        <button type="submit" className="submit-button">
-          Log In
-        </button>
-      </form>
-      <p>
-        Don't have an account?{" "}
-        <a href="/signup" className="signup-link">
-          Sign Up
-        </a>
-      </p>
-    </div>
+    <>
+      <div className="container">
+        <h1 className="welcome-title">Welcome to Horizon Finance!</h1>
+        <div className="signup-container">
+          <h2>Log In</h2>
+          {error && <p className="error-message">{error}</p>}
+          <form onSubmit={handleSubmit}>
+            <InputField
+              id="email"
+              type="email"
+              name="email"
+              placeholder="you@example.com"
+              label="Email"
+            />
+            <InputField
+              id="password"
+              type="password"
+              name="password"
+              placeholder="Enter your password"
+              label="Password"
+            />
+            <button type="submit" className="submit-button">
+              Log In
+            </button>
+          </form>
+          <p>
+            Don't have an account?{" "}
+            <a href="/signup" className="signup-link">
+              Sign Up
+            </a>
+          </p>
+        </div>
+      </div>
+    </>
   );
 };
 

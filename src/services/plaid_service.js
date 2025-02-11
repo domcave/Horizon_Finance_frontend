@@ -8,7 +8,7 @@ axios.defaults.baseURL = "http://HorizonFinanceLB-1989960674.us-east-1.elb.amazo
 export function ConnectBank({ user_id, onSuccess }) {
   const [linkToken, setLinkToken] = useState(null);
   const [publicToken, setPublicToken] = useState(null);
-  const [isConnected, setIsConnected] = useState(false); // New state to track connection
+  const [isConnected, setIsConnected] = useState(false); 
 
   useEffect(() => {
     async function fetch() {
