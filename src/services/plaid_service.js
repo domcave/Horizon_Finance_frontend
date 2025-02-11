@@ -3,7 +3,7 @@ import axios from "axios";
 import { useState, useEffect } from "react";
 import "../css/ConnectBank.css";
 
-axios.defaults.baseURL = "http://HorizonFinanceLB-1989960674.us-east-1.elb.amazonaws.com:80/api";
+axios.defaults.baseURL = "http://HorizonFinanceLB-1989960674.us-east-1.elb.amazonaws.com:80";
 
 export function ConnectBank({ user_id, onSuccess }) {
   const [linkToken, setLinkToken] = useState(null);

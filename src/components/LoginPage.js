@@ -17,7 +17,7 @@ const LoginPage = () => {
 
     try {
       const response = await axios.post(
-        "http://HorizonFinanceLB-1989960674.us-east-1.elb.amazonaws.com:80/api/auth/login",
+        "http://HorizonFinanceLB-1989960674.us-east-1.elb.amazonaws.com:80/auth/login",
         {
           email: email,
           password: password,

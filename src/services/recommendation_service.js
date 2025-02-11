@@ -1,6 +1,6 @@
 import axios from "axios";
 
-axios.defaults.baseURL = "http://HorizonFinanceLB-1989960674.us-east-1.elb.amazonaws.com:80/api"; 
+axios.defaults.baseURL = "http://HorizonFinanceLB-1989960674.us-east-1.elb.amazonaws.com:80"; 
 
 /**
  *
