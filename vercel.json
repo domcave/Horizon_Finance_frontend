@@ -1,0 +1,8 @@
+{
+    "rewrites": [
+        {
+            "source": "/:path*",
+            "destination": "http://HorizonFinanceLB-1989960674.us-east-1.elb.amazonaws.com:80/:path*"
+        }
+    ]
+}
