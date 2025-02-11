@@ -2,6 +2,13 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+## Setup
+The following sections assume you have Node.js/npm installed. If you do not, go to https://nodejs.org and download the most recent stable version (LTS).
+
+Following the install, in your terminal, run `node -v` and `npm -v`. These commands should both output version numbers, which means the install was successful. If you don't see anything try closing and restarting your terminal instance and try again. Sometimes this is necessary for your computer to recognize the new commands.
+
+Once you have done this, clone this repository locally.
+
 ## Available Scripts
 
 In the project directory, you can run:
