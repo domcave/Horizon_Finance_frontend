@@ -1,0 +1,37 @@
+name: Deploy to EC2 using SSH
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Set up SSH
+        uses: webfactory/ssh-agent@v0.5.3
+        with:
+          ssh-private-key: ${{ secrets.EC2_SSH_KEY }}
+
+      - name: Deploy Frontend to EC2
+        run: |
+          ssh -v -o StrictHostKeyChecking=no -o ConnectTimeout=60 -o ServerAliveInterval=30 ec2-user@${{ secrets.EC2_PUBLIC_IP }} "
+            cd /home/ec2-user &&
+            if [ -d 'Horizon_Finance_frontend' ]; then
+              cd Horizon_Finance_frontend &&
+              git pull origin main;
+            else
+              git clone git@github.com:AntonijSimonovski/Horizon_Finance_frontend.git &&
+              cd Horizon_Finance_frontend;
+            fi &&
+            sudo systemctl stop httpd &&
+            yarn install &&
+            yarn build &&
+            sudo cp -r /home/ec2-user/Horizon_Finance_frontend/build/* /var/www/html/ &&
+            sudo systemctl start httpd
+          "
