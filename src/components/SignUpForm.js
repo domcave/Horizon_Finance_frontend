@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import InputField from "./InputField";
 import axios from "axios";
 import "../css/LoginSignup.css";
+import { BACKEND_BASE_URL } from "../environment";
 
 const SignUpForm = ({ setAuthenticated }) => {
   const [error, setError] = useState("");
@@ -24,7 +25,7 @@ const SignUpForm = ({ setAuthenticated }) => {
 
     try {
       const registrationResponse = await axios.post(
-        "http://HorizonFinanceLB-1989960674.us-east-1.elb.amazonaws.com:80/auth/register",
+        `${BACKEND_BASE_URL}/auth/register`,
         {
           email: email,
           first_name: firstName,
@@ -40,7 +41,7 @@ const SignUpForm = ({ setAuthenticated }) => {
       );
 
       const loginResponse = await axios.post(
-        "http://HorizonFinanceLB-1989960674.us-east-1.elb.amazonaws.com:80/auth/login",
+        `${BACKEND_BASE_URL}/auth/login`,
         { email, password },
         {
           headers: {
