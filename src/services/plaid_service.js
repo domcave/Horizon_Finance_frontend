@@ -2,8 +2,9 @@ import { usePlaidLink } from "react-plaid-link";
 import axios from "axios";
 import { useState, useEffect } from "react";
 import "../css/ConnectBank.css";
+import { BACKEND_BASE_URL } from "../environment";
 
-axios.defaults.baseURL = "http://HorizonFinanceLB-1989960674.us-east-1.elb.amazonaws.com:80";
+axios.defaults.baseURL = BACKEND_BASE_URL;
 
 export function ConnectBank({ user_id, onSuccess }) {
   const [linkToken, setLinkToken] = useState(null);

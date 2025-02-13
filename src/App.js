@@ -11,6 +11,7 @@ import WhatIf from "./components/WhatIf.js";
 import LoginPage from "./components/LoginPage.js";
 import FinancialForm from "./components/FinancialForm.js";
 
+
 function App() {
   const [authenticated, setAuthenticated] = useState(
     !!localStorage.getItem("userToken")
