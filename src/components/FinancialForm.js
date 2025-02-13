@@ -4,6 +4,7 @@ import "../css/LoginSignup.css";
 import InputField from "./InputField";
 import { ConnectBank } from "../services/plaid_service";
 import axios from "axios";
+import { BACKEND_BASE_URL } from "../environment";
 
 const FinancialForm = () => {
   const navigate = useNavigate();
@@ -29,7 +30,7 @@ const FinancialForm = () => {
 
     try {
       const response = await axios.post(
-        "http://HorizonFinanceLB-1989960674.us-east-1.elb.amazonaws.com:80/user/add_income_and_age",
+        `${BACKEND_BASE_URL}/user/add_income_and_age`,
         {
           income: income,
           age: age,

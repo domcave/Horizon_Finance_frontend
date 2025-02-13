@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import "../css/LoginSignup.css";
 import axios from "axios";
 import InputField from "./InputField";
+import { BACKEND_BASE_URL } from "../environment";
 
 const LoginPage = () => {
   const navigate = useNavigate();
@@ -17,7 +18,7 @@ const LoginPage = () => {
 
     try {
       const response = await axios.post(
-        "http://HorizonFinanceLB-1989960674.us-east-1.elb.amazonaws.com:80/auth/login",
+        `${BACKEND_BASE_URL}/auth/login`,
         {
           email: email,
           password: password,
