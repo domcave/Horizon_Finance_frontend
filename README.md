@@ -1,3 +1,8 @@
+# Frontend Update
+**This has been deployed!!!**
+
+Use the following [link](http://horizonfinancelb-1989960674.us-east-1.elb.amazonaws.com/) to access the project.
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
